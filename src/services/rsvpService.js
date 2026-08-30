@@ -36,6 +36,8 @@ export async function saveRSVP(formData) {
     dietary: formData.dietary || 'veg',
     message: formData.message || '',
     events: formData.events || ['wedding'],
+    idFileName: formData.idFileName || '',
+    idFileData: formData.idFileData || '',
     submittedAt: new Date().toISOString()
   };
 
@@ -100,7 +102,7 @@ export function exportRSVPsToCSV(rsvps) {
     return;
   }
 
-  const headers = ['Guest Name', 'Attending', 'Guests Count', 'Dietary Preference', 'Phone', 'Email', 'Message', 'Submitted Date'];
+  const headers = ['Guest Name', 'Attending', 'Guests Count', 'Dietary Preference', 'Phone', 'Email', 'ID Proof File Name', 'Message', 'Submitted Date'];
   
   const rows = rsvps.map(r => [
     `"${(r.name || '').replace(/"/g, '""')}"`,
@@ -109,6 +111,7 @@ export function exportRSVPsToCSV(rsvps) {
     `"${(r.dietary || '').toUpperCase()}"`,
     `"${(r.phone || '').replace(/"/g, '""')}"`,
     `"${(r.email || '').replace(/"/g, '""')}"`,
+    `"${(r.idFileName || 'No File Uploaded').replace(/"/g, '""')}"`,
     `"${(r.message || '').replace(/"/g, '""')}"`,
     `"${r.submittedAt ? new Date(r.submittedAt).toLocaleString() : ''}"`
   ]);

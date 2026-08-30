@@ -14,7 +14,7 @@ export default function RSVPForm() {
     travelMode: 'Flight',
     travelNumber: '',
     idFileName: '',
-    idFilePreview: null
+    idFileData: ''
   });
 
   const handleChange = (e) => {
@@ -25,11 +25,15 @@ export default function RSVPForm() {
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData(prev => ({
-        ...prev,
-        idFileName: file.name,
-        idFilePreview: URL.createObjectURL(file)
-      }));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData(prev => ({
+          ...prev,
+          idFileName: file.name,
+          idFileData: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -43,7 +47,9 @@ export default function RSVPForm() {
       email: formData.email,
       guestCount: formData.guestCount || 1,
       attending: 'yes',
-      message: `Travel: ${formData.travelMode} ${formData.travelNumber || ''} | Arrival: ${formData.arrivalTime || 'N/A'}`
+      message: `Travel: ${formData.travelMode} ${formData.travelNumber || ''} | Arrival: ${formData.arrivalTime || 'N/A'}`,
+      idFileName: formData.idFileName || '',
+      idFileData: formData.idFileData || ''
     });
 
     setSubmitted(true);
@@ -88,7 +94,7 @@ export default function RSVPForm() {
               Response Recorded!
             </h3>
             <p className="font-sans text-xs text-[#2D2D2D]/80 max-w-xs mx-auto leading-relaxed mb-6">
-              Thank you, {formData.fullName || 'Guest'}. Your RSVP details have been saved. Vivek & Indira look forward to celebrating with you at Raj Vilas!
+              Thank you, {formData.fullName || 'Guest'}. Your RSVP details and ID proof have been saved. Vivek & Indira look forward to celebrating with you at Raj Vilas!
             </p>
             <button
               onClick={() => setSubmitted(false)}
@@ -255,13 +261,13 @@ export default function RSVPForm() {
                       className="hidden"
                     />
                   </label>
-                  <span className="font-sans text-[11px] text-[#2D2D2D]/60 truncate">
+                  <span className="font-sans text-[11px] text-[#2D2D2D]/70 font-medium truncate">
                     {formData.idFileName ? formData.idFileName : "no files selected"}
                   </span>
                 </div>
 
                 <p className="font-sans text-[10px] text-[#2D2D2D]/55 leading-relaxed pt-2">
-                  Files will be securely uploaded to our Google Drive to speed up your check-in.
+                  Files will be securely saved with your RSVP to speed up your hotel check-in.
                 </p>
               </div>
             </div>

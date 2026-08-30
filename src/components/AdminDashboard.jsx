@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Download, RefreshCw, X, Users, CheckCircle, XCircle, Utensils } from 'lucide-react';
+import { Lock, Download, RefreshCw, X, Users, CheckCircle, XCircle, Utensils, FileText } from 'lucide-react';
 import { getAllRSVPs, exportRSVPsToCSV } from '../services/rsvpService';
 
 export default function AdminDashboard({ isOpen, onClose }) {
@@ -53,7 +53,7 @@ export default function AdminDashboard({ isOpen, onClose }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="relative w-full max-w-4xl bg-[#FFF0F5] border-2 border-[#E6A4B4] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+          className="relative w-full max-w-5xl bg-[#FFF0F5] border-2 border-[#E6A4B4] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
         >
           {/* Header Bar */}
           <div className="bg-gradient-to-r from-[#3D061A] via-[#5E0B2B] to-[#3D061A] p-5 text-[#FFF0F5] border-b border-[#E6A4B4]/50 flex items-center justify-between">
@@ -128,7 +128,7 @@ export default function AdminDashboard({ isOpen, onClose }) {
                     className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-[#E6A4B4] text-xs font-bold text-[#5E0B2B] shadow-sm hover:bg-[#FFF0F5] cursor-pointer"
                   >
                     <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                    Refresh
+                    Refresh Data
                   </button>
                 </div>
 
@@ -211,14 +211,15 @@ export default function AdminDashboard({ isOpen, onClose }) {
                         <th className="p-3 text-center">Count</th>
                         <th className="p-3">Diet</th>
                         <th className="p-3">Contact</th>
-                        <th className="p-3">Wishes / Message</th>
+                        <th className="p-3">ID Proof File</th>
+                        <th className="p-3">Wishes / Travel</th>
                         <th className="p-3 text-right">Date</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       {rsvps.length === 0 ? (
                         <tr>
-                          <td colSpan="7" className="p-8 text-center text-[#2D2D2D]/50 italic">
+                          <td colSpan="8" className="p-8 text-center text-[#2D2D2D]/50 italic">
                             No RSVPs received yet. New guest submissions will appear here automatically!
                           </td>
                         </tr>
@@ -255,6 +256,30 @@ export default function AdminDashboard({ isOpen, onClose }) {
 
                             <td className="p-3 text-[#2D2D2D]/70">
                               {record.phone || record.email || '-'}
+                            </td>
+
+                            {/* ID Proof File Column */}
+                            <td className="p-3">
+                              {record.idFileData ? (
+                                <a 
+                                  href={record.idFileData} 
+                                  download={record.idFileName || 'Guest_ID_Proof'} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#5E0B2B] text-[#F8C8DC] border border-[#E6A4B4] text-[10px] font-bold shadow-xs hover:bg-[#700933] transition-colors"
+                                  title="Click to view/download ID proof file"
+                                >
+                                  <FileText className="w-3 h-3 text-[#F8C8DC]" />
+                                  <span className="max-w-[80px] truncate">{record.idFileName || 'View ID'}</span>
+                                  <Download className="w-2.5 h-2.5 text-[#F8C8DC]" />
+                                </a>
+                              ) : record.idFileName ? (
+                                <span className="text-[10px] text-[#5E0B2B] font-semibold">
+                                  {record.idFileName}
+                                </span>
+                              ) : (
+                                <span className="text-[10px] text-gray-400 italic">No ID File</span>
+                              )}
                             </td>
 
                             <td className="p-3 max-w-xs truncate text-[#2D2D2D]/80 italic">
