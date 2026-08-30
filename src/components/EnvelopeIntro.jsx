@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function EnvelopeIntro({ onOpen }) {
@@ -36,7 +35,7 @@ export default function EnvelopeIntro({ onOpen }) {
       {/* Full-Screen Velvet Envelope Container */}
       <div className="relative w-full h-full overflow-hidden flex items-center justify-center bg-black">
         
-        {/* Full-Screen Real Photographic Plush Velvet Envelope Image (Includes Embedded V&I Wax Seal) */}
+        {/* Pure Photographic Velvet Envelope Image (Only the original envelope photograph) */}
         <img 
           src="/velvet-envelope.png" 
           alt="Real Royal Plush Velvet Envelope" 
@@ -46,19 +45,13 @@ export default function EnvelopeIntro({ onOpen }) {
         {/* Subtle Dark Vignette Overlay for Contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50 pointer-events-none" />
         
-        {/* Metallic Gold Corner Filigrees */}
-        <div className="absolute top-5 left-5 w-14 h-14 border-t-2 border-l-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
-        <div className="absolute top-5 right-5 w-14 h-14 border-t-2 border-r-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
-        <div className="absolute bottom-5 left-5 w-14 h-14 border-b-2 border-l-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
-        <div className="absolute bottom-5 right-5 w-14 h-14 border-b-2 border-r-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
-
-        {/* Exclusive Interactive Hot-Spot directly over the Wax Seal Logo */}
+        {/* Invisible Interactive Click/Touch Target directly over the Envelope Seal */}
         {!isOpen && (
           <button 
             onClick={handleOpen}
             onTouchEnd={handleOpen}
             aria-label="Open Invitation Wax Seal"
-            className="absolute top-[51.5%] left-[50.5%] -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full z-40 cursor-pointer focus:outline-none active:scale-95 transition-transform"
+            className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full z-40 cursor-pointer focus:outline-none opacity-0"
           />
         )}
 
@@ -84,7 +77,7 @@ export default function EnvelopeIntro({ onOpen }) {
           )}
         </AnimatePresence>
 
-        {/* Floating Instruction Banner at Bottom */}
+        {/* Clean Instruction Banner at Bottom */}
         <AnimatePresence>
           {!isOpen && (
             <motion.div 
@@ -92,10 +85,8 @@ export default function EnvelopeIntro({ onOpen }) {
               transition={{ repeat: Infinity, duration: 2 }}
               className="absolute bottom-8 left-0 right-0 z-40 text-center px-4 flex items-center justify-center pointer-events-none"
             >
-              <p className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#FFF3CC] font-semibold flex items-center justify-center gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] bg-black/60 py-2.5 px-6 rounded-full border border-[#FFD700]/40 backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD700]" />
+              <p className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#FFF3CC] font-semibold flex items-center justify-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] bg-black/60 py-2.5 px-6 rounded-full border border-[#FFD700]/40 backdrop-blur-md">
                 Tap Wax Seal to Open Invitation
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD700]" />
               </p>
             </motion.div>
           )}
