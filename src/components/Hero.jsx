@@ -34,34 +34,40 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Sanskrit Mantra at Upper Center */}
-      <div className="absolute top-11 sm:top-14 left-0 right-0 z-20 px-4 text-center pointer-events-none">
+      {/* Sanskrit Mantra at Upper Center (Locked at 89px) */}
+      <div 
+        className="absolute top-[89px] left-0 right-0 z-20 px-4 text-center pointer-events-none"
+      >
         <p className="font-serif text-[11px] sm:text-xs text-[#FFD6E5] tracking-wide max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] font-bold leading-relaxed">
           वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
           निर्विघ्नं कुरु में देव, सर्व कार्येषु सर्वदा ॥
         </p>
       </div>
 
-      {/* Main Couple Names & Announcement (Shifted Upward to align Vivek with the red line) */}
+      {/* Main Couple Names & Announcement (Locked at 28px Top Distance) */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="relative z-20 px-6 my-auto pt-10 sm:pt-14 pb-2 max-w-lg w-full flex flex-col items-center"
+        className="relative z-20 px-6 my-auto pt-[28px] pb-2 max-w-lg w-full flex flex-col items-center"
       >
         {/* Groom: Vivek */}
         <div className="mb-0 text-center w-full">
           <h1 className="font-script text-7xl sm:text-8xl text-gold-gradient font-normal tracking-wide drop-shadow-[0_6px_14px_rgba(0,0,0,0.95)] py-0 px-3 leading-tight">
             Vivek
           </h1>
-          <p className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] -mt-2 sm:-mt-2.5 font-bold leading-relaxed">
+          <p 
+            className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] font-bold leading-relaxed mt-[5px]"
+          >
             Son of<br />
             Mr. Chetan Raitani & Mrs. Renu Raitani
           </p>
         </div>
 
-        {/* Weds Separator */}
-        <div className="flex items-center justify-center gap-4 my-1.5 w-5/6">
+        {/* Weds Separator (Locked at 30px Gap) */}
+        <div 
+          className="flex items-center justify-center gap-4 w-5/6 my-[30px]"
+        >
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#F596AA] to-[#FFD6E5]" />
           <span className="font-serif text-base sm:text-lg text-[#FFD6E5] drop-shadow-[0_3px_6px_rgba(0,0,0,0.95)] font-bold tracking-widest uppercase">
             Weds
@@ -74,7 +80,9 @@ export default function Hero() {
           <h1 className="font-script text-7xl sm:text-8xl text-gold-gradient font-normal tracking-wide drop-shadow-[0_6px_14px_rgba(0,0,0,0.95)] py-0 px-3 leading-tight">
             Indira
           </h1>
-          <p className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] -mt-2 sm:-mt-2.5 font-bold leading-relaxed">
+          <p 
+            className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] font-bold leading-relaxed mt-[25px]"
+          >
             Daughter of<br />
             Mr. Kanhaiya Lal Lakhmani & Mrs. Ratna Lakhmani
           </p>
