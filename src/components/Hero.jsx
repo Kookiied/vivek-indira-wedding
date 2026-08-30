@@ -7,15 +7,19 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-between text-center overflow-hidden bg-[#3D061A]">
       
-      {/* Background Palace Image with Watercolor Sky & Ganesha */}
+      {/* Background Palace Image with Bright Watercolor Sky & Ganesha */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/hero-ganesha-bg.png" 
+          src="/hero-bg.jpg" 
           alt="Raj Vilas Palace with Ganesha" 
-          className="w-full h-full object-cover object-top filter brightness-[0.98] contrast-[1.02]"
+          className="w-full h-full object-cover object-top filter brightness-[1.08] contrast-[1.03] saturate-[1.06]"
         />
-        {/* Soft top-to-bottom high-contrast dark magenta vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-[#3D061A]" />
+        
+        {/* Subtle top vignette for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#3D061A]/85" />
+        
+        {/* Very subtle Pink Shadow Overlay at the Downside of the Image */}
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#3D061A] via-[#5E0B2B]/35 via-[#F596AA]/15 to-transparent pointer-events-none" />
       </div>
 
       {/* Whimsical Animated Flying Butterflies Layer */}
@@ -32,7 +36,7 @@ export default function Hero() {
       </div>
 
       {/* Ganesha Mantra just below Ganesha Icon */}
-      <div className="absolute top-[155px] sm:top-[170px] left-0 right-0 z-20 px-4 text-center pointer-events-none">
+      <div className="absolute top-[145px] sm:top-[165px] left-0 right-0 z-20 px-4 text-center pointer-events-none">
         <p className="font-serif text-[11px] sm:text-xs text-[#FFD6E5] tracking-wide max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] font-bold leading-relaxed">
           वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
           निर्विघ्नं कुरु में देव, सर्व कार्येषु सर्वदा ॥
