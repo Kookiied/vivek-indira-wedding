@@ -1,72 +1,57 @@
 @import "tailwindcss";
 
-@theme {
-  --color-burgundy: #4A040F;
-  --color-burgundy-dark: #310209;
-  --color-burgundy-light: #6A0D1B;
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #F2EDE4;
-  --color-gold: #D4AF37;
-  --color-gold-light: #F3E5AB;
-  --color-gold-dark: #AA820A;
-  --color-charcoal: #2D2D2D;
-
-  --font-script: "Great Vibes", "Pinyon Script", cursive;
-  --font-serif: "Cinzel", "Playfair Display", Georgia, serif;
-  --font-sans: "Montserrat", system-ui, sans-serif;
-}
-
 @layer utilities {
-  /* Paper texture pattern */
-  .bg-paper-texture {
-    background-color: #FAF8F5;
-    background-image: radial-gradient(#D4AF37 0.4px, transparent 0.4px), radial-gradient(#4A040F 0.4px, #FAF8F5 0.4px);
-    background-size: 16px 16px;
-    background-position: 0 0, 8px 8px;
-    background-blend-mode: multiply;
+  /* Royal Calligraphy Script Font for Names */
+  .font-script {
+    font-family: 'Great Vibes', 'Alex Brush', 'Pinyon Script', cursive !important;
   }
 
-  .bg-burgundy-pattern {
-    background-color: #4A040F;
-    background-image: radial-gradient(#D4AF37 0.4px, transparent 0.4px);
-    background-size: 20px 20px;
-  }
-
-  /* Gold shimmer text effect */
+  /* High-Shine Metallic Rose-Gold Gradient */
   .text-gold-gradient {
-    background: linear-gradient(135deg, #FFF3CC 0%, #FFD700 50%, #FFA500 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFD6E5 20%, #F596AA 50%, #E86B8A 80%, #FFD6E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Rich Deep Rose Metallic Gradient */
+  .text-rose-gradient {
+    background: linear-gradient(135deg, #FFD6E5 0%, #F596AA 50%, #C94A6E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Gold metallic border */
-  .border-gold-metallic {
-    border-image: linear-gradient(135deg, #F3E5AB, #D4AF37, #AA820A, #D4AF37) 1;
+  /* Royal Dark Magenta Texture Pattern */
+  .bg-burgundy-pattern {
+    background-color: #3D061A;
+    background-image: radial-gradient(#F596AA 0.65px, transparent 0.65px), radial-gradient(#F596AA 0.65px, #3D061A 0.65px);
+    background-size: 26px 26px;
+    background-position: 0 0, 13px 13px;
   }
 
-  /* Gold glow effect */
-  .shadow-gold-glow {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+  /* Slow Metallic Shine Shimmer Effect */
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(245, 150, 170, 0.35) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3.5s infinite;
   }
 }
 
-/* Custom scrollbar */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Custom Rose-Gold Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #310209;
+  background: #3D061A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #F596AA;
   border-radius: 3px;
 }
-
-/* Reset root width constraint to allow mobile-first container */
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD6E5;
 }

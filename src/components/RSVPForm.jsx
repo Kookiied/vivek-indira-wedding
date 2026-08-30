@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Upload } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { saveRSVP } from '../services/rsvpService';
 
 export default function RSVPForm() {
@@ -50,7 +50,7 @@ export default function RSVPForm() {
   };
 
   return (
-    <section className="relative w-full bg-paper-texture text-[#2D2D2D] pt-24 pb-16 px-4">
+    <section className="relative w-full bg-[#FFF0F5] text-[#2D2D2D] pt-24 pb-16 px-4">
       
       {/* Seamless Overlapping Floral Divider */}
       <div className="absolute top-0 left-0 right-0 -translate-y-1/2 z-20 pointer-events-none flex justify-center">
@@ -65,13 +65,13 @@ export default function RSVPForm() {
         
         {/* Section Header */}
         <div className="text-center mb-10">
-          <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#4A040F]/60 font-semibold block mb-2">
+          <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#5E0B2B]/70 font-semibold block mb-2">
             Confirm Your Attendance
           </span>
-          <h2 className="font-serif text-5xl text-[#4A040F] tracking-wide font-medium">
+          <h2 className="font-serif text-5xl text-[#5E0B2B] tracking-wide font-medium">
             RSVP
           </h2>
-          <div className="w-12 h-0.5 bg-[#D4AF37]/60 mx-auto mt-3 rounded-full" />
+          <div className="w-12 h-0.5 bg-[#E6A4B4]/70 mx-auto mt-3 rounded-full" />
         </div>
 
         {submitted ? (
@@ -79,12 +79,12 @@ export default function RSVPForm() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#FAF8F5] border border-[#D4AF37]/50 rounded-2xl p-8 shadow-xl text-center"
+            className="bg-white border border-[#E6A4B4]/50 rounded-2xl p-8 shadow-xl text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-[#4A040F] text-[#D4AF37] border border-[#D4AF37]/60 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-16 h-16 rounded-full bg-[#5E0B2B] text-[#F8C8DC] border border-[#E6A4B4]/60 flex items-center justify-center mx-auto mb-4 shadow-lg">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-[#4A040F] mb-2">
+            <h3 className="font-serif text-2xl font-bold text-[#5E0B2B] mb-2">
               Response Recorded!
             </h3>
             <p className="font-sans text-xs text-[#2D2D2D]/80 max-w-xs mx-auto leading-relaxed mb-6">
@@ -92,7 +92,7 @@ export default function RSVPForm() {
             </p>
             <button
               onClick={() => setSubmitted(false)}
-              className="text-xs font-sans font-semibold text-[#4A040F] uppercase tracking-widest underline underline-offset-4 cursor-pointer"
+              className="text-xs font-sans font-semibold text-[#5E0B2B] uppercase tracking-widest underline underline-offset-4 cursor-pointer"
             >
               Update RSVP Details
             </button>
@@ -102,14 +102,14 @@ export default function RSVPForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* CARD 1: Personal Details */}
-            <div className="bg-[#FAF8F5] border border-[#D4AF37]/35 rounded-2xl p-6 shadow-md relative">
-              <h3 className="font-serif text-lg italic text-[#D4AF37] text-center mb-6">
+            <div className="bg-white border border-[#E6A4B4]/45 rounded-2xl p-6 shadow-md relative">
+              <h3 className="font-serif text-lg italic text-[#B83B5E] text-center mb-6">
                 Personal Details
               </h3>
               
               <div className="space-y-5">
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     Full Name
                   </label>
                   <input 
@@ -119,12 +119,12 @@ export default function RSVPForm() {
                     placeholder="Enter your full name"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors placeholder:text-gray-300"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors placeholder:text-gray-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     WhatsApp Number
                   </label>
                   <input 
@@ -134,12 +134,12 @@ export default function RSVPForm() {
                     placeholder="+91 00000 00000"
                     value={formData.whatsapp}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors placeholder:text-gray-300"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors placeholder:text-gray-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     Email Address
                   </label>
                   <input 
@@ -148,27 +148,27 @@ export default function RSVPForm() {
                     placeholder="your.email@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors placeholder:text-gray-300"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors placeholder:text-gray-400"
                   />
                 </div>
               </div>
             </div>
 
             {/* CARD 2: Guest Details */}
-            <div className="bg-[#FAF8F5] border border-[#D4AF37]/35 rounded-2xl p-6 shadow-md relative">
-              <h3 className="font-serif text-lg italic text-[#D4AF37] text-center mb-6">
+            <div className="bg-white border border-[#E6A4B4]/45 rounded-2xl p-6 shadow-md relative">
+              <h3 className="font-serif text-lg italic text-[#B83B5E] text-center mb-6">
                 Guest Details
               </h3>
               
               <div>
-                <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                   Number of Pax (From Your Group)
                 </label>
                 <select 
                   name="guestCount"
                   value={formData.guestCount}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors cursor-pointer"
+                  className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors cursor-pointer"
                 >
                   <option value="" disabled>Select number of guests</option>
                   <option value="1">1 (Self)</option>
@@ -182,14 +182,14 @@ export default function RSVPForm() {
             </div>
 
             {/* CARD 3: Travel Details */}
-            <div className="bg-[#FAF8F5] border border-[#D4AF37]/35 rounded-2xl p-6 shadow-md relative">
-              <h3 className="font-serif text-lg italic text-[#D4AF37] text-center mb-6">
+            <div className="bg-white border border-[#E6A4B4]/45 rounded-2xl p-6 shadow-md relative">
+              <h3 className="font-serif text-lg italic text-[#B83B5E] text-center mb-6">
                 Travel Details
               </h3>
               
               <div className="space-y-5">
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     Arrival Time on 25/10/2026
                   </label>
                   <input 
@@ -198,19 +198,19 @@ export default function RSVPForm() {
                     placeholder="eg. 12:00 PM"
                     value={formData.arrivalTime}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors placeholder:text-gray-300"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors placeholder:text-gray-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     Mode of Travel
                   </label>
                   <select 
                     name="travelMode"
                     value={formData.travelMode}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors cursor-pointer"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors cursor-pointer"
                   >
                     <option value="Flight">Flight</option>
                     <option value="Train">Train</option>
@@ -219,7 +219,7 @@ export default function RSVPForm() {
                 </div>
 
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                  <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                     Flight / Train Number
                   </label>
                   <input 
@@ -228,25 +228,25 @@ export default function RSVPForm() {
                     placeholder="e.g. AI-101 or 12345"
                     value={formData.travelNumber}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-[#D4AF37]/40 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#4A040F] transition-colors placeholder:text-gray-300"
+                    className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors placeholder:text-gray-400"
                   />
                 </div>
               </div>
             </div>
 
             {/* CARD 4: Hotel Check-in */}
-            <div className="bg-[#FAF8F5] border border-[#D4AF37]/35 rounded-2xl p-6 shadow-md relative">
-              <h3 className="font-serif text-lg italic text-[#D4AF37] text-center mb-6">
+            <div className="bg-white border border-[#E6A4B4]/45 rounded-2xl p-6 shadow-md relative">
+              <h3 className="font-serif text-lg italic text-[#B83B5E] text-center mb-6">
                 Hotel Check-in
               </h3>
               
               <div className="space-y-4">
-                <label className="block font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
+                <label className="block font-sans text-[10px] uppercase tracking-widest text-[#5E0B2B] font-semibold mb-1">
                   Upload ID for Check-in (All members from your group)
                 </label>
                 
                 <div className="flex items-center gap-3">
-                  <label className="px-4 py-2 bg-[#F2EDE4] border border-[#D4AF37]/40 rounded-lg text-[11px] font-sans font-semibold text-[#4A040F] hover:bg-[#FAF8F5] transition-colors cursor-pointer shrink-0">
+                  <label className="px-4 py-2 bg-[#FFF0F5] border border-[#E6A4B4]/60 rounded-lg text-[11px] font-sans font-semibold text-[#5E0B2B] hover:bg-[#F8C8DC]/30 transition-colors cursor-pointer shrink-0">
                     Choose Files
                     <input 
                       type="file"
@@ -271,7 +271,7 @@ export default function RSVPForm() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full py-4 rounded-full bg-gradient-to-r from-[#4A040F] via-[#6A0D1B] to-[#4A040F] text-[#FAF8F5] border border-[#D4AF37]/60 font-serif font-bold text-xs uppercase tracking-widest shadow-xl flex items-center justify-center cursor-pointer hover:brightness-110 transition-all"
+              className="w-full py-4 rounded-full bg-gradient-to-r from-[#5E0B2B] via-[#700933] to-[#5E0B2B] text-[#FFF0F5] border border-[#E6A4B4]/60 font-serif font-bold text-xs uppercase tracking-widest shadow-xl flex items-center justify-center cursor-pointer hover:brightness-110 transition-all"
             >
               Submit
             </motion.button>

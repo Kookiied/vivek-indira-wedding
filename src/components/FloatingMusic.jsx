@@ -98,12 +98,12 @@ export default function FloatingMusic({ autoPlayTriggered = false }) {
         whileTap={{ scale: 0.92 }}
         onClick={togglePlay}
         aria-label="Toggle Background Music"
-        className="relative group p-3.5 rounded-full bg-[#4A040F] text-[#D4AF37] border-2 border-[#D4AF37] shadow-2xl hover:shadow-[#D4AF37]/40 transition-all flex items-center justify-center cursor-pointer"
+        className="relative group p-3.5 rounded-full bg-[#5E0B2B] text-[#F8C8DC] border-2 border-[#E6A4B4] shadow-2xl hover:shadow-[#E6A4B4]/50 transition-all flex items-center justify-center cursor-pointer"
       >
         {isPlaying ? (
-          <Volume2 className="w-5 h-5 text-[#D4AF37]" />
+          <Volume2 className="w-5 h-5 text-[#F8C8DC]" />
         ) : (
-          <VolumeX className="w-5 h-5 text-[#FAF8F5]/70 group-hover:text-[#D4AF37]" />
+          <VolumeX className="w-5 h-5 text-[#FFF0F5]/70 group-hover:text-[#F8C8DC]" />
         )}
       </motion.button>
     </div>

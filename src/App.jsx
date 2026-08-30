@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { Lock, Phone, MessageCircle } from 'lucide-react';
 import EnvelopeIntro from './components/EnvelopeIntro';
 import Hero from './components/Hero';
@@ -27,10 +27,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#1A1A1A] flex justify-center items-center font-sans antialiased text-[#2D2D2D] sm:py-6">
+    <div className="min-h-screen w-full bg-[#1A030D] flex justify-center items-center font-sans antialiased text-[#2D2D2D] sm:py-6">
       
       {/* Mobile-first Container Frame (max-w-md centered on desktop) */}
-      <div className="w-full max-w-md min-h-screen sm:min-h-[92vh] sm:rounded-3xl bg-[#FAF8F5] relative shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-x-hidden border-x sm:border-2 border-[#D4AF37]/40 flex flex-col">
+      <div className="w-full max-w-md min-h-screen sm:min-h-[92vh] sm:rounded-3xl bg-[#FFF0F5] relative shadow-[0_0_50px_rgba(61,6,26,0.9)] overflow-x-hidden border-x sm:border-2 border-[#E6A4B4]/50 flex flex-col">
         
         {/* Floating Persistent Audio Controller */}
         <FloatingMusic autoPlayTriggered={autoPlayAudio} />
@@ -67,29 +67,29 @@ export default function App() {
           <FinalPortrait />
 
           {/* Footer: Admin Portal Link & Developer Credits */}
-          <div className="w-full py-4 bg-[#310209] text-center border-t border-[#D4AF37]/30 flex flex-col items-center justify-center gap-2 px-4">
+          <div className="w-full py-4 bg-[#3D061A] text-center border-t border-[#E6A4B4]/40 flex flex-col items-center justify-center gap-2 px-4">
             <button 
               onClick={() => setIsAdminOpen(true)}
-              className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-[#D4AF37] opacity-70 hover:opacity-100 transition-opacity cursor-pointer font-serif py-1 px-3 rounded-full hover:bg-white/5"
+              className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-[#F8C8DC] opacity-80 hover:opacity-100 transition-opacity cursor-pointer font-serif py-1 px-3 rounded-full hover:bg-white/10"
             >
-              <Lock className="w-3 h-3 text-[#FFD700]" />
+              <Lock className="w-3 h-3 text-[#F8C8DC]" />
               Host Admin Portal
             </button>
 
             {/* Developer Credits with Interactive Call & WhatsApp Links */}
-            <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] text-[#FAF8F5]/80 font-serif pt-1 border-t border-white/5 w-full">
-              <span>Developed by <strong className="text-[#FFD700] font-semibold">Varun Raitani</strong></span>
-              <span className="text-[#D4AF37]/50">&bull;</span>
+            <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] text-[#FFF0F5]/80 font-serif pt-1 border-t border-white/10 w-full">
+              <span>Developed by <strong className="text-[#F8C8DC] font-semibold">Varun Raitani</strong></span>
+              <span className="text-[#E6A4B4]/50">&bull;</span>
               
               <div className="flex items-center gap-2">
-                <span className="text-[#FAF8F5]/90 font-sans text-[11px] font-medium">+91 7310138649</span>
+                <span className="text-[#FFF0F5]/90 font-sans text-[11px] font-medium">+91 7310138649</span>
                 
                 {/* Phone Call Link Button */}
                 <a 
                   href="tel:+917310138649" 
                   title="Call Varun Raitani"
                   aria-label="Call Varun Raitani"
-                  className="p-1.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/60 text-[#FFD700] hover:bg-[#D4AF37] hover:text-[#4A040F] transition-all cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-1.5 rounded-full bg-[#E6A4B4]/20 border border-[#E6A4B4]/60 text-[#F8C8DC] hover:bg-[#E6A4B4] hover:text-[#3D061A] transition-all cursor-pointer flex items-center justify-center shadow-sm"
                 >
                   <Phone className="w-3 h-3" />
                 </a>

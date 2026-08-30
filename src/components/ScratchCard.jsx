@@ -19,22 +19,22 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
     canvas.width = width;
     canvas.height = height;
 
-    // Fill cover canvas with classy champagne-gold foil texture
+    // Fill cover canvas with high-shine Rose-Gold metallic foil texture
     ctx.clearRect(0, 0, width, height);
 
     const gradient = ctx.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, '#D4AF37');
-    gradient.addColorStop(0.3, '#FAF8F5');
-    gradient.addColorStop(0.5, '#F3E5AB');
-    gradient.addColorStop(0.8, '#D4AF37');
-    gradient.addColorStop(1, '#AA820A');
+    gradient.addColorStop(0, '#FFD6E5');
+    gradient.addColorStop(0.25, '#F596AA');
+    gradient.addColorStop(0.5, '#FFFFFF');
+    gradient.addColorStop(0.75, '#E86B8A');
+    gradient.addColorStop(1, '#C94A6E');
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    // Minimal elegant label in the center
-    ctx.fillStyle = '#8B3A2B';
-    ctx.font = '600 9px Montserrat, sans-serif';
+    // Elegant SCRATCH prompt in the center
+    ctx.fillStyle = '#3D061A';
+    ctx.font = 'bold 9px Montserrat, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('SCRATCH', width / 2, height / 2);
@@ -116,7 +116,7 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
       {/* Heart Container (Clipped to SVG Heart Shape) */}
       <div 
         ref={containerRef}
-        className="relative w-[110px] h-[100px] cursor-pointer pointer-events-auto overflow-hidden shadow-sm hover:scale-[1.02] active:scale-98 transition-transform"
+        className="relative w-[110px] h-[100px] cursor-pointer pointer-events-auto overflow-hidden shadow-lg hover:scale-[1.04] active:scale-95 transition-transform"
         style={{ clipPath: 'url(#heart-clip)' }}
         onTouchStart={handleStart}
         onTouchMove={handleMove}
@@ -126,17 +126,17 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
         onMouseUp={handleEnd}
         onMouseLeave={handleEnd}
       >
-        {/* Revealed Content Card (Classy White Heart from Screenshot) */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#FAF8F5] border border-[#D4AF37]/20">
-          <span className="font-sans text-[8px] uppercase tracking-widest text-[#8B3A2B]/60 font-semibold mb-1">
+        {/* Revealed Content Card */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#FFF0F5] border-2 border-[#E6A4B4]">
+          <span className="font-sans text-[8px] uppercase tracking-widest text-[#B83B5E] font-bold mb-1">
             {label}
           </span>
-          <span className="font-serif text-2xl font-bold text-[#8B3A2B] leading-none">
+          <span className="font-serif text-2xl font-black text-[#5E0B2B] leading-none">
             {hiddenText}
           </span>
         </div>
 
-        {/* Scratchable Gold Canvas Overlay */}
+        {/* Scratchable Metallic Rose-Gold Canvas Overlay */}
         <AnimatePresence>
           {!isRevealed && (
             <motion.canvas
@@ -158,10 +158,10 @@ export default function ScratchCard() {
   const handleHeartReveal = () => {
     // Trigger small confetti burst on individual scratch reveal
     confetti({
-      particleCount: 40,
-      spread: 50,
+      particleCount: 45,
+      spread: 60,
       origin: { y: 0.75 },
-      colors: ['#D4AF37', '#8B3A2B', '#FAF8F5', '#AA820A']
+      colors: ['#FFD6E5', '#F596AA', '#5E0B2B', '#E86B8A', '#FFFFFF']
     });
 
     setRevealedCount(prev => {
@@ -176,18 +176,18 @@ export default function ScratchCard() {
 
   const triggerCelebrationConfetti = () => {
     const end = Date.now() + (2.5 * 1000);
-    const colors = ['#D4AF37', '#8B3A2B', '#FAF8F5', '#AA820A'];
+    const colors = ['#FFD6E5', '#F596AA', '#5E0B2B', '#E86B8A', '#FFFFFF'];
 
     (function frame() {
       confetti({
-        particleCount: 5,
+        particleCount: 6,
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.8 },
         colors: colors
       });
       confetti({
-        particleCount: 5,
+        particleCount: 6,
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.8 },
