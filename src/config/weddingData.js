@@ -80,7 +80,7 @@ export const weddingData = {
           id: "e6",
           number: "06",
           title: "Sehra Bandhan",
-          time: "8:00 PM",
+          time: "7:00 PM",
           location: "Bhumika Hall, Raj Vilas",
           description: "Groom's traditional sehra tying ceremony."
         },
