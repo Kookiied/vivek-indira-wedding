@@ -16,8 +16,8 @@ export const weddingData = {
     googleMapsUrl: "https://maps.google.com/?q=Raj+Vilas+Orchha+Madhya+Pradesh"
   },
   contacts: [
-    { name: "Vivek", phone: "+91 73101 38649" },
-    { name: "Chetan", phone: "+91 94531 00889" }
+    { name: "Varun", phone: "+91 73101 38649" },
+    { name: "Chetan", phone: "+91 93361 51231" }
   ],
   audioUrl: "/music.mp3",
   images: {

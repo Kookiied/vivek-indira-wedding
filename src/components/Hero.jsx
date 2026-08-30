@@ -23,33 +23,40 @@ export default function Hero() {
       {/* Whimsical Animated Flying Butterflies Layer */}
       <WhimsicalButterflies />
 
-      {/* S.B.D Monograms at Upper Bar */}
+      {/* S.B.D Monograms & Golden Ganesha Icon at Upper Bar */}
       <div className="absolute top-4 sm:top-6 left-0 right-0 z-20 flex justify-between items-center px-6 sm:px-10 pointer-events-none">
-        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#FFD6E5] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
+        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
           S.B.D
         </span>
 
-        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#FFD6E5] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
+        {/* Traditional Gold Ganesha Symbol (Positioned Above Mantra in the Mid) */}
+        <div className="flex flex-col items-center pt-1">
+          <img 
+            src="/ganesha-reference.png" 
+            alt="Lord Ganesha" 
+            className="w-12 h-14 sm:w-16 sm:h-18 object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]"
+          />
+        </div>
+
+        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
           S.B.D
         </span>
       </div>
 
-      {/* Sanskrit Mantra at Upper Center (Locked at 89px) */}
-      <div 
-        className="absolute top-[89px] left-0 right-0 z-20 px-4 text-center pointer-events-none"
-      >
-        <p className="font-serif text-[11px] sm:text-xs text-[#FFD6E5] tracking-wide max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] font-bold leading-relaxed">
+      {/* Sanskrit Mantra (Positioned directly BELOW Ganesha Icon) */}
+      <div className="absolute top-22 sm:top-26 left-0 right-0 z-20 px-4 text-center pointer-events-none">
+        <p className="font-serif text-[11px] sm:text-xs text-[#E65C8A] tracking-wide max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] font-bold leading-relaxed">
           वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
           निर्विघ्नं कुरु में देव, सर्व कार्येषु सर्वदा ॥
         </p>
       </div>
 
-      {/* Main Couple Names & Announcement (Locked at 28px Top Distance) */}
+      {/* Main Couple Names & Announcement (Locked at exact pixel height) */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="relative z-20 px-6 my-auto pt-[28px] pb-2 max-w-lg w-full flex flex-col items-center"
+        className="relative z-20 px-6 my-auto pt-[36px] pb-2 max-w-lg w-full flex flex-col items-center"
       >
         {/* Groom: Vivek */}
         <div className="mb-0 text-center w-full">
@@ -64,9 +71,9 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Weds Separator (Locked at 30px Gap) */}
+        {/* Weds Separator */}
         <div 
-          className="flex items-center justify-center gap-4 w-5/6 my-[30px]"
+          className="flex items-center justify-center gap-4 w-5/6 my-[28px]"
         >
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#F596AA] to-[#FFD6E5]" />
           <span className="font-serif text-base sm:text-lg text-[#FFD6E5] drop-shadow-[0_3px_6px_rgba(0,0,0,0.95)] font-bold tracking-widest uppercase">
@@ -81,7 +88,7 @@ export default function Hero() {
             Indira
           </h1>
           <p 
-            className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] font-bold leading-relaxed mt-[25px]"
+            className="font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2px_5px_rgba(0,0,0,0.95)] font-bold leading-relaxed mt-[22px]"
           >
             Daughter of<br />
             Mr. Kanhaiya Lal Lakhmani & Mrs. Ratna Lakhmani
