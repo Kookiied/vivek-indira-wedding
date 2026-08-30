@@ -9,7 +9,7 @@ export default function DressCode() {
       
       {/* Section Header */}
       <div className="text-center max-w-md mx-auto mb-12">
-        <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#5E0B2B] font-semibold block mb-2">
+        <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#5E0B2B] font-semibold block mb-6">
           Attire Guide
         </span>
         <h2 className="font-script text-5xl sm:text-6xl text-[#5E0B2B]">
