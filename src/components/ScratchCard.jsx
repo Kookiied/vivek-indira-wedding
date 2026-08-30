@@ -40,6 +40,23 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
     ctx.fillText('SCRATCH', width / 2, height / 2);
   }, []);
 
+  // Prevent mobile browser page scrolling when scratching on touch devices
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleNativeTouchMove = (e) => {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    };
+
+    el.addEventListener('touchmove', handleNativeTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener('touchmove', handleNativeTouchMove);
+    };
+  }, []);
+
   const getCoordinates = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return null;
@@ -111,13 +128,13 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
   };
 
   return (
-    <div className="flex flex-col items-center select-none">
+    <div className="flex flex-col items-center select-none touch-none">
       
-      {/* Heart Container (Clipped to SVG Heart Shape) */}
+      {/* Heart Container (Clipped to SVG Heart Shape with touch-none) */}
       <div 
         ref={containerRef}
-        className="relative w-[110px] h-[100px] cursor-pointer pointer-events-auto overflow-hidden shadow-lg hover:scale-[1.04] active:scale-95 transition-transform"
-        style={{ clipPath: 'url(#heart-clip)' }}
+        className="relative w-[110px] h-[100px] cursor-pointer pointer-events-auto overflow-hidden shadow-lg hover:scale-[1.04] active:scale-95 transition-transform touch-none"
+        style={{ clipPath: 'url(#heart-clip)', touchAction: 'none' }}
         onTouchStart={handleStart}
         onTouchMove={handleMove}
         onTouchEnd={handleEnd}
@@ -152,7 +169,7 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
   );
 }
 
-export default function ScratchCard() {
+export default function ScratchCard({ onAllRevealed }) {
   const [revealedCount, setRevealedCount] = useState(0);
 
   const handleHeartReveal = () => {
@@ -169,6 +186,9 @@ export default function ScratchCard() {
       if (nextCount === 3) {
         // Trigger major celebratory explosion once all three are revealed!
         setTimeout(triggerCelebrationConfetti, 400);
+        if (onAllRevealed) {
+          onAllRevealed();
+        }
       }
       return nextCount;
     });
