@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
+import confetti from 'canvas-confetti';
+
+export default function EnvelopeIntro({ onOpen }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = (e) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    if (isOpen) return;
+    setIsOpen(true);
+
+    // Golden Sparkles Explosion
+    confetti({
+      particleCount: 100,
+      spread: 110,
+      origin: { y: 0.5 },
+      colors: ['#FFD700', '#FFF3CC', '#4A040F', '#AA820A', '#F3E5AB']
+    });
+
+    // Notify parent after light rays expand
+    setTimeout(() => {
+      onOpen();
+    }, 1500);
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 1.08, transition: { duration: 0.8, ease: "easeInOut" } }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#180104] overflow-hidden select-none"
+    >
+      {/* Full-Screen Velvet Envelope Container */}
+      <div className="relative w-full h-full overflow-hidden flex items-center justify-center bg-black">
+        
+        {/* Full-Screen Real Photographic Plush Velvet Envelope Image (Includes Embedded V&I Wax Seal) */}
+        <img 
+          src="/velvet-envelope.png" 
+          alt="Real Royal Plush Velvet Envelope" 
+          className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.05] brightness-[1.02]"
+        />
+
+        {/* Subtle Dark Vignette Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50 pointer-events-none" />
+        
+        {/* Metallic Gold Corner Filigrees */}
+        <div className="absolute top-5 left-5 w-14 h-14 border-t-2 border-l-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
+        <div className="absolute top-5 right-5 w-14 h-14 border-t-2 border-r-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
+        <div className="absolute bottom-5 left-5 w-14 h-14 border-b-2 border-l-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
+        <div className="absolute bottom-5 right-5 w-14 h-14 border-b-2 border-r-2 border-[#FFD700]/80 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" />
+
+        {/* Exclusive Interactive Hot-Spot directly over the Wax Seal Logo */}
+        {!isOpen && (
+          <button 
+            onClick={handleOpen}
+            onTouchEnd={handleOpen}
+            aria-label="Open Invitation Wax Seal"
+            className="absolute top-[51.5%] left-[50.5%] -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full z-40 cursor-pointer focus:outline-none active:scale-95 transition-transform"
+          />
+        )}
+
+        {/* Radiant Golden Sunburst Beams (Explodes on Open) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.2 }}
+              animate={{ opacity: [0, 0.95, 1], scale: [0.3, 2.5, 6] }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
+              className="absolute z-30 pointer-events-none flex items-center justify-center"
+            >
+              {/* Glowing Golden Core */}
+              <div className="w-[600px] h-[600px] rounded-full bg-radial from-[#FFF3CC] via-[#FFD700]/85 to-transparent blur-xl" />
+              
+              {/* 16 Rotating Sunburst Light Rays */}
+              <svg viewBox="0 0 200 200" className="absolute w-[1000px] h-[1000px] animate-spin-slow opacity-90 text-[#FFD700] fill-current">
+                {[...Array(16)].map((_, i) => (
+                  <polygon key={i} points="100,100 93,0 107,0" transform={`rotate(${i * 22.5} 100 100)`} />
+                ))}
+              </svg>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Floating Instruction Banner at Bottom */}
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div 
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="absolute bottom-8 left-0 right-0 z-40 text-center px-4 flex items-center justify-center pointer-events-none"
+            >
+              <p className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#FFF3CC] font-semibold flex items-center justify-center gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] bg-black/60 py-2.5 px-6 rounded-full border border-[#FFD700]/40 backdrop-blur-md">
+                <Sparkles className="w-3.5 h-3.5 text-[#FFD700]" />
+                Tap Wax Seal to Open Invitation
+                <Sparkles className="w-3.5 h-3.5 text-[#FFD700]" />
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </div>
+    </motion.div>
+  );
+}
