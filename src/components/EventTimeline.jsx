@@ -23,7 +23,7 @@ export default function EventTimeline() {
   const lotusTop = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative w-full bg-[#5E0B2B] text-[#FFF0F5] py-16 px-2 sm:px-4">
+    <section className="relative w-full bg-[#5E0B2B] text-[#FFF0F5] py-16 px-1 sm:px-4 overflow-hidden">
       
       {/* Section Header */}
       <div className="text-center max-w-md mx-auto mb-16">
@@ -36,25 +36,25 @@ export default function EventTimeline() {
         <div className="w-16 h-0.5 bg-[#E6A4B4] mx-auto mt-3 rounded-full opacity-60" />
       </div>
 
-      <div ref={containerRef} className="max-w-lg mx-auto relative">
+      <div ref={containerRef} className="max-w-lg mx-auto relative px-1">
         
         {/* Central Rose Gold Vertical Line (Centered on all screens) */}
         <div className="absolute left-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#E6A4B4]/40 via-[#E6A4B4] to-[#E6A4B4]/40 -translate-x-1/2 pointer-events-none">
           
-          {/* Scroll-driven White Lotus Traveling Node */}
+          {/* Scroll-driven White Lotus Traveling Node (Sized perfectly to avoid touching cards) */}
           <motion.div 
             style={{ top: lotusTop }}
-            className="absolute -left-5 -translate-y-1/2 z-30 pointer-events-none flex items-center justify-center"
+            className="absolute -left-3.5 sm:-left-5 -translate-y-1/2 z-30 pointer-events-none flex items-center justify-center"
           >
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
+            <div className="relative w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center">
               {/* Soft pink halo glow */}
               <div className="absolute inset-0 rounded-full bg-[#E6A4B4]/60 blur-md animate-pulse" />
 
-              {/* White Lotus Image Asset */}
+              {/* White Lotus / Rose Image Asset */}
               <img 
                 src="/lotus.png" 
-                alt="White Lotus" 
-                className="w-9 h-9 sm:w-11 sm:h-11 object-contain relative z-10 filter drop-shadow-[0_4px_12px_rgba(230,164,180,0.85)] hover:scale-110 transition-transform"
+                alt="White Rose" 
+                className="w-6 h-6 sm:w-9 sm:h-9 object-contain relative z-10 filter drop-shadow-[0_2px_8px_rgba(230,164,180,0.85)] hover:scale-110 transition-transform"
               />
             </div>
           </motion.div>
@@ -73,7 +73,7 @@ export default function EventTimeline() {
               transition={{ duration: 0.6 }}
               className="sticky top-4 z-20 flex justify-center mb-8"
             >
-              <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/60 text-[#F8C8DC] px-6 sm:px-8 py-2.5 rounded-full shadow-lg backdrop-blur-md flex items-center justify-center">
+              <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/60 text-[#F8C8DC] px-5 sm:px-8 py-2 rounded-full shadow-lg backdrop-blur-md flex items-center justify-center">
                 <div className="text-center">
                   <span className="font-serif font-bold text-xs sm:text-sm tracking-[0.2em] uppercase block leading-none">
                     {dayGroup.dayTitle}
@@ -85,7 +85,7 @@ export default function EventTimeline() {
               </div>
             </motion.div>
 
-            {/* Day Events - Alternating Left & Right on ALL devices */}
+            {/* Day Events - Alternating Left & Right with 24px Margin Gap from Center Line */}
             <div className="space-y-10">
               {dayGroup.events.map((event, eventIdx) => {
                 const isEven = eventIdx % 2 === 0;
@@ -99,40 +99,40 @@ export default function EventTimeline() {
                     transition={{ duration: 0.6, delay: eventIdx * 0.1 }}
                     className="relative flex items-center"
                   >
-                    {/* Smaller Solid Rose Gold Diamond Marker */}
+                    {/* Delicate Rose Gold Diamond Marker */}
                     <div className="absolute left-1/2 -translate-x-1/2 z-10 flex items-center justify-center">
                       <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#E6A4B4] rotate-45 shadow-[0_0_6px_rgba(230,164,180,0.8)]" />
                     </div>
 
                     {/* Event Content Card (Alternating Left & Right on mobile and desktop) */}
-                    <div className={`w-1/2 ${isEven ? 'pr-3 sm:pr-8 text-right' : 'ml-auto pl-3 sm:pl-8 text-left'}`}>
+                    <div className={`w-1/2 ${isEven ? 'pr-5 sm:pr-10 text-left sm:text-right' : 'ml-auto pl-5 sm:pl-10 text-left'}`}>
 
-                      <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/40 rounded-xl p-3 sm:p-5 shadow-xl hover:border-[#E6A4B4] transition-all group">
+                      <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/40 rounded-xl p-2.5 sm:p-5 shadow-xl hover:border-[#E6A4B4] transition-all group text-left">
                         
-                        {/* Event Number & Time */}
-                        <div className={`flex items-center gap-1.5 mb-1.5 text-[#F8C8DC] text-[10px] sm:text-xs font-semibold ${isEven ? 'justify-end' : 'justify-start'}`}>
+                        {/* Event Number & Time (Consistently left-aligned on mobile, right-aligned on desktop for left cards) */}
+                        <div className={`flex items-center gap-1 mb-1 text-[#F8C8DC] text-[9px] sm:text-xs font-semibold ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
                           <span className="font-serif opacity-60">
                             {event.number} &bull;
                           </span>
-                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-2 py-0.5 rounded-full border border-[#E6A4B4]/30 text-[10px] sm:text-xs">
+                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-1.5 py-0.5 rounded-full border border-[#E6A4B4]/30 text-[9px] sm:text-xs">
                             <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F8C8DC]" />
                             {event.time}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className={`font-serif text-sm sm:text-lg font-bold text-[#F8C8DC] mb-1 ${event.title.includes("WEDDING") ? 'text-base sm:text-xl text-[#F8C8DC] tracking-wider' : ''}`}>
+                        <h3 className={`font-serif text-xs sm:text-lg font-bold text-[#F8C8DC] mb-1 ${event.title.includes("WEDDING") ? 'text-xs sm:text-xl text-[#F8C8DC] tracking-wider' : ''}`}>
                           {event.title}
                         </h3>
 
-                        {/* Location */}
-                        <div className={`flex items-center gap-1 text-[10px] sm:text-xs text-[#FFF0F5]/80 mb-1.5 ${isEven ? 'justify-end' : 'justify-start'}`}>
+                        {/* Location (Consistently left-aligned next to icon on mobile, right-aligned on desktop for left cards) */}
+                        <div className={`flex items-center gap-1 text-[9px] sm:text-xs text-[#FFF0F5]/80 mb-1 ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
                           <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#E6A4B4] shrink-0" />
                           <span>{event.location}</span>
                         </div>
 
                         {/* Description */}
-                        <p className="font-sans text-[10px] sm:text-xs text-[#FFF0F5]/70 leading-relaxed">
+                        <p className="font-sans text-[9px] sm:text-xs text-[#FFF0F5]/70 leading-snug sm:leading-relaxed">
                           {event.description}
                         </p>
 
