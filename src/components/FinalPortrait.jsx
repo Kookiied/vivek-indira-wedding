@@ -3,7 +3,7 @@ import { weddingData } from '../config/weddingData';
 
 export default function FinalPortrait() {
   return (
-    <section className="relative w-full bg-[#FFF0F5] overflow-hidden flex flex-col items-center">
+    <section className="relative w-full bg-pink-paper-pattern overflow-hidden flex flex-col items-center">
       
       {/* Full-bleed 9:16 story-ratio image container */}
       <div className="relative w-full aspect-[9/16] overflow-hidden shadow-inner">

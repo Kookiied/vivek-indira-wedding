@@ -5,7 +5,7 @@ import { Shirt, User } from 'lucide-react';
 
 export default function DressCode() {
   return (
-    <section className="relative w-full bg-[#FFF0F5] text-[#2D2D2D] py-16 px-4">
+    <section className="relative w-full bg-pink-paper-pattern text-[#2D2D2D] py-16 px-4">
       
       {/* Section Header */}
       <div className="text-center max-w-md mx-auto mb-12">

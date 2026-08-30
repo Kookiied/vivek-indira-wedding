@@ -33,6 +33,14 @@
     background-position: 0 0, 13px 13px;
   }
 
+  /* Soft Blush Pink Dotted Texture Pattern */
+  .bg-pink-paper-pattern {
+    background-color: #FFF0F5;
+    background-image: radial-gradient(#E6A4B4 0.75px, transparent 0.75px), radial-gradient(#E6A4B4 0.75px, #FFF0F5 0.75px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+
   /* Slow Metallic Shine Shimmer Effect */
   .animate-shimmer {
     background: linear-gradient(90deg, transparent 0%, rgba(245, 150, 170, 0.35) 50%, transparent 100%);

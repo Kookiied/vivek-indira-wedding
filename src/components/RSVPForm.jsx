@@ -50,7 +50,7 @@ export default function RSVPForm() {
   };
 
   return (
-    <section className="relative w-full bg-[#FFF0F5] text-[#2D2D2D] pt-24 pb-16 px-4">
+    <section className="relative w-full bg-pink-paper-pattern text-[#2D2D2D] pt-24 pb-16 px-4">
       
       {/* Seamless Overlapping Floral Divider */}
       <div className="absolute top-0 left-0 right-0 -translate-y-1/2 z-20 pointer-events-none flex justify-center">
