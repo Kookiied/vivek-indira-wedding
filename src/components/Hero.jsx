@@ -7,19 +7,17 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-between text-center overflow-hidden bg-[#3D061A]">
       
-      {/* Background Palace Image with Bright Watercolor Sky & Ganesha */}
+      {/* Background Palace Image (100% Pure Original Quality - No CSS filters or heavy dark overlays) */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/hero-bg.jpg" 
           alt="Raj Vilas Palace with Ganesha" 
-          className="w-full h-full object-cover object-top filter brightness-[1.08] contrast-[1.03] saturate-[1.06]"
+          className="w-full h-full object-cover object-top"
+          style={{ imageRendering: 'high-quality' }}
         />
         
-        {/* Subtle top vignette for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#3D061A]/85" />
-        
-        {/* Very subtle Pink Shadow Overlay at the Downside of the Image */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#3D061A] via-[#5E0B2B]/35 via-[#F596AA]/15 to-transparent pointer-events-none" />
+        {/* Very subtle Downside Pink Shadow Overlay (Only at the bottom edge) */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#3D061A] via-[#5E0B2B]/20 to-transparent pointer-events-none" />
       </div>
 
       {/* Whimsical Animated Flying Butterflies Layer */}
