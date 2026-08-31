@@ -36,7 +36,7 @@ export const weddingData = {
           title: "Thread Ceremony",
           time: "11:00 AM",
           location: "Bhumika Hall, Raj Vilas",
-          description: "Varun and Vivek Thread Ceremony. A sacred ritual of auspicious threads, ancient mantras, and divine family blessings."
+          description: "Vivek and Varun Thread Ceremony. A sacred ritual of auspicious threads, ancient mantras, and divine family blessings."
         },
         {
           id: "e2",
