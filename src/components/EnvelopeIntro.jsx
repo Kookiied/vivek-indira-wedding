@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
+// Toggle between animation styles. Options: 'outburst', 'lotus'
+// We will add more options here later!
+const ACTIVE_ANIMATION = 'lotus';
+
 export default function EnvelopeIntro({ onOpen }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,15 +16,30 @@ export default function EnvelopeIntro({ onOpen }) {
     if (isOpen) return;
     setIsOpen(true);
 
-    // Cerise Pink & Magenta Sparkles Explosion
-    confetti({
-      particleCount: 100,
-      spread: 110,
-      origin: { y: 0.5 },
-      colors: ['#E65C8A', '#FFD6E5', '#F596AA', '#3D061A', '#FFF0F5']
-    });
+    if (ACTIVE_ANIMATION === 'outburst') {
+      // Cerise Pink & Magenta Sparkles Explosion
+      confetti({
+        particleCount: 100,
+        spread: 110,
+        origin: { y: 0.5 },
+        colors: ['#E65C8A', '#FFD6E5', '#F596AA', '#3D061A', '#FFF0F5']
+      });
+    } else if (ACTIVE_ANIMATION === 'lotus') {
+      // Lotus Petal Confetti Explosion
+      confetti({
+        particleCount: 150,
+        spread: 360,
+        startVelocity: 45,
+        origin: { y: 0.5 },
+        colors: ['#FFB6C1', '#FF69B4', '#FFF0F5', '#E6A4B4', '#F8C8DC'],
+        shapes: ['circle', 'square'], // Mimics soft petals blowing away
+        gravity: 0.6,
+        scalar: 1.2,
+        ticks: 200
+      });
+    }
 
-    // Notify parent after light rays expand
+    // Notify parent after animation expands
     setTimeout(() => {
       onOpen();
     }, 1500);
@@ -55,9 +74,8 @@ export default function EnvelopeIntro({ onOpen }) {
           />
         )}
 
-        {/* Radiant Cerise Pink Sunburst Beams (Explodes on Open) */}
         <AnimatePresence>
-          {isOpen && (
+          {isOpen && ACTIVE_ANIMATION === 'outburst' && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.2 }}
               animate={{ opacity: [0, 0.95, 1], scale: [0.3, 2.5, 6] }}
@@ -72,6 +90,34 @@ export default function EnvelopeIntro({ onOpen }) {
                 {[...Array(16)].map((_, i) => (
                   <polygon key={i} points="100,100 93,0 107,0" transform={`rotate(${i * 22.5} 100 100)`} />
                 ))}
+              </svg>
+            </motion.div>
+          )}
+
+          {isOpen && ACTIVE_ANIMATION === 'lotus' && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.5, 4, 8], rotate: [0, 90, 180] }}
+              transition={{ duration: 1.8, ease: "easeInOut" }}
+              className="absolute z-30 pointer-events-none flex items-center justify-center"
+            >
+              {/* Glowing Rose Gold Core */}
+              <div className="absolute w-[400px] h-[400px] rounded-full bg-[#E6A4B4]/40 blur-3xl" />
+              
+              {/* Intricate SVG Mandala / Blooming Lotus */}
+              <svg viewBox="0 0 200 200" className="absolute w-[600px] h-[600px] text-[#E6A4B4] fill-current opacity-90 drop-shadow-[0_0_25px_rgba(230,164,180,0.9)]">
+                <g transform="translate(100,100)">
+                  {/* Outer 12 Lotus Petals */}
+                  {[...Array(12)].map((_, i) => (
+                    <path key={`outer-${i}`} d="M0,0 C20,-40 20,-80 0,-100 C-20,-80 -20,-40 0,0" transform={`rotate(${i * 30})`} opacity="0.8"/>
+                  ))}
+                  {/* Inner 12 Lotus Petals */}
+                  {[...Array(12)].map((_, i) => (
+                    <path key={`inner-${i}`} d="M0,0 C15,-30 15,-60 0,-75 C-15,-60 -15,-30 0,0" transform={`rotate(${i * 30 + 15})`} fill="#FFF0F5" opacity="0.95"/>
+                  ))}
+                  {/* Core Divine Ring */}
+                  <circle cx="0" cy="0" r="18" fill="#FFD6E5" className="animate-pulse" />
+                </g>
               </svg>
             </motion.div>
           )}
