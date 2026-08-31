@@ -8,6 +8,7 @@ import EventTimeline from './components/EventTimeline';
 import DressCode from './components/DressCode';
 import LocationDetails from './components/LocationDetails';
 import RSVPForm from './components/RSVPForm';
+import RSVPHosts from './components/RSVPHosts';
 import FinalPortrait from './components/FinalPortrait';
 import FloatingMusic from './components/FloatingMusic';
 import AdminDashboard from './components/AdminDashboard';
@@ -63,7 +64,10 @@ export default function App() {
           {/* 7. RSVP Engine */}
           <RSVPForm />
 
-          {/* 8. Final Portrait */}
+          {/* 8. RSVP Hosts Details */}
+          <RSVPHosts />
+
+          {/* 9. Final Portrait */}
           <FinalPortrait />
 
           {/* Footer: Admin Portal Link & Developer Credits */}
