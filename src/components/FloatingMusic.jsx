@@ -35,6 +35,23 @@ export default function FloatingMusic({ autoPlayTriggered = false }) {
         .then(() => {
           setIsPlaying(true);
           setHasInteracted(true);
+
+          // Configure Media Session Metadata so iOS Lock Screen shows the beautiful couple-logo
+          if ('mediaSession' in navigator) {
+            try {
+              navigator.mediaSession.metadata = new window.MediaMetadata({
+                title: "Vivek & Indira",
+                artist: "Wedding Invitation",
+                album: "October 25, 2026",
+                artwork: [
+                  { src: '/couple-logo.jpg', sizes: '256x256', type: 'image/jpeg' },
+                  { src: '/couple-logo.jpg', sizes: '512x512', type: 'image/jpeg' }
+                ]
+              });
+            } catch (err) {
+              console.warn("MediaSession metadata failed to set:", err);
+            }
+          }
         })
         .catch((error) => {
           console.warn("Audio play waiting for user gesture:", error);
