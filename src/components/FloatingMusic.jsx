@@ -11,12 +11,20 @@ export default function FloatingMusic({ autoPlayTriggered = false }) {
   useEffect(() => {
     // Instantiate audio object pointing to public/music.mp3
     const audio = new Audio(weddingData.audioUrl);
-    audio.loop = true;
     audio.volume = 0.7;
+
+    // Custom loop: When music ends, reset to 20 seconds and play again
+    const handleEnded = () => {
+      audio.currentTime = 20;
+      audio.play().catch(err => console.warn("Loop play failed:", err));
+    };
+    audio.addEventListener('ended', handleEnded);
+
     audioRef.current = audio;
 
     return () => {
       if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', handleEnded);
         audioRef.current.pause();
         audioRef.current = null;
       }
@@ -28,6 +36,12 @@ export default function FloatingMusic({ autoPlayTriggered = false }) {
     if (!audio) return;
     
     audio.volume = 0.7;
+    
+    // Ensure we start playing from the 20-second mark
+    if (audio.currentTime < 20) {
+      audio.currentTime = 20;
+    }
+
     const playPromise = audio.play();
     
     if (playPromise !== undefined) {
