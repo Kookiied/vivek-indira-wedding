@@ -8,20 +8,20 @@ import { Sliders, X } from 'lucide-react';
  * DEVELOPER TOGGLE FOR LIVE POSITION & SIZE CONTROLLER:
  * Set ENABLE_DEV_CONTROLLER to true anytime in the future to reactivate the on-screen live slider widget!
  */
-const ENABLE_DEV_CONTROLLER = true;
+const ENABLE_DEV_CONTROLLER = false;
 
 export default function Hero() {
   const [showTuner, setShowTuner] = useState(false);
 
   // Permanently Locked Layout & Font Size Values
   const [layout, setLayout] = useState({
-    mantraTop: 106,          // Mantra position from top (px)
-    topPadding: 62,          // Section top distance (px)
+    mantraTop: 79,           // Mantra position from top (px)
+    topPadding: 120,         // Section top distance (px)
     nameFontSize: 86,        // Vivek & Indira name font size (px)
-    vivekParentGap: -3,      // Vivek family text top margin (px)
+    vivekParentGap: -5,      // Vivek family text top margin (px)
     vivekParentSize: 11,     // Vivek family text font size (px)
-    wedsGap: 30,             // Gap around Weds separator (px)
-    indiraParentGap: 30,     // Indira family text top margin (px)
+    wedsGap: 27,             // Gap around Weds separator (px)
+    indiraParentGap: 27,     // Indira family text top margin (px)
     indiraParentSize: 11     // Indira family text font size (px)
   });
 
@@ -64,7 +64,7 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Sanskrit Mantra (Locked at 106px) */}
+      {/* Sanskrit Mantra (Locked at 79px) */}
       <div 
         className="absolute left-0 right-0 z-20 px-4 text-center pointer-events-none transition-all duration-75"
         style={{ top: `${layout.mantraTop}px` }}
@@ -75,7 +75,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Main Couple Names & Announcement (Locked at 62px Section Top Distance) */}
+      {/* Main Couple Names & Announcement (Locked at 120px Section Top Distance) */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Weds Separator (Locked at 30px Gap) */}
+        {/* Weds Separator (Locked at 27px Gap) */}
         <div 
           className="flex items-center justify-center gap-4 w-5/6 transition-all duration-75"
           style={{ marginTop: `${layout.wedsGap}px`, marginBottom: `${layout.wedsGap}px` }}
