@@ -133,7 +133,16 @@ export default function EventTimeline() {
 
                         {/* Description */}
                         <p className="font-sans text-[11px] sm:text-sm text-[#FFF0F5]/90 leading-relaxed font-normal">
-                          {event.description}
+                          {event.description.includes("Varun and Vivek") ? (
+                            <>
+                              <strong className="font-extrabold text-[#F8C8DC] text-[13px] sm:text-base tracking-wide font-sans">
+                                Varun and Vivek
+                              </strong>
+                              {event.description.replace("Varun and Vivek", "")}
+                            </>
+                          ) : (
+                            event.description
+                          )}
                         </p>
 
                       </div>
