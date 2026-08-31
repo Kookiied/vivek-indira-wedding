@@ -85,8 +85,8 @@ export default function EventTimeline() {
               </div>
             </motion.div>
 
-            {/* Day Events - Alternating Left & Right with 20px-24px Margin Gap from Center Line */}
-            <div className="space-y-12">
+            {/* Day Events - Alternating Left & Right with center rose clearance */}
+            <div className="space-y-14">
               {dayGroup.events.map((event, eventIdx) => {
                 const isEven = eventIdx % 2 === 0;
 
@@ -104,35 +104,35 @@ export default function EventTimeline() {
                       <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#E6A4B4] rotate-45 shadow-[0_0_6px_rgba(230,164,180,0.8)]" />
                     </div>
 
-                    {/* Event Content Card (Alternating Left & Right with pristine center rose clearance) */}
-                    <div className={`w-1/2 ${isEven ? 'pr-5 sm:pr-10 text-left sm:text-right' : 'ml-auto pl-5 sm:pl-10 text-left'}`}>
+                    {/* Event Content Card (Expanded downward block length & larger fonts) */}
+                    <div className={`w-1/2 ${isEven ? 'pr-4 sm:pr-8 text-left sm:text-right' : 'ml-auto pl-4 sm:pl-8 text-left'}`}>
 
-                      <div className="bg-[#3D061A]/95 border border-[#E6A4B4]/50 rounded-2xl p-3.5 sm:p-6 shadow-2xl hover:border-[#E6A4B4] transition-all group text-left">
+                      <div className="bg-[#3D061A]/95 border border-[#E6A4B4]/50 rounded-2xl p-4 sm:p-7 shadow-2xl hover:border-[#E6A4B4] transition-all group text-left">
                         
                         {/* Event Number & Time */}
-                        <div className={`flex items-center gap-1 mb-1.5 text-[#F8C8DC] text-[10px] sm:text-xs font-semibold ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
-                          <span className="font-serif opacity-70">
+                        <div className={`flex items-center gap-1 mb-2 text-[#F8C8DC] text-[11px] sm:text-sm font-semibold ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
+                          <span className="font-serif opacity-75">
                             {event.number} &bull;
                           </span>
-                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-2 py-0.5 rounded-full border border-[#E6A4B4]/40 text-[10px] sm:text-xs font-bold">
-                            <Clock className="w-3 h-3 text-[#F8C8DC]" />
+                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-2.5 py-0.5 rounded-full border border-[#E6A4B4]/40 text-[11px] sm:text-sm font-bold">
+                            <Clock className="w-3.5 h-3.5 text-[#F8C8DC]" />
                             {event.time}
                           </span>
                         </div>
 
-                        {/* Title (Enlarged for crisp legibility) */}
-                        <h3 className={`font-serif text-sm sm:text-lg font-extrabold text-[#F8C8DC] mb-1.5 leading-snug ${event.title.includes("WEDDING") ? 'text-sm sm:text-xl text-[#F8C8DC] tracking-wider' : ''}`}>
+                        {/* Title */}
+                        <h3 className={`font-serif text-base sm:text-xl font-black text-[#F8C8DC] mb-2 leading-snug ${event.title.includes("WEDDING") ? 'text-base sm:text-2xl text-[#F8C8DC] tracking-wider' : ''}`}>
                           {event.title}
                         </h3>
 
                         {/* Location */}
-                        <div className={`flex items-center gap-1 text-[10px] sm:text-xs text-[#FFF0F5]/90 font-medium mb-1.5 ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
-                          <MapPin className="w-3 h-3 text-[#E6A4B4] shrink-0" />
+                        <div className={`flex items-center gap-1 text-[11px] sm:text-sm text-[#FFF0F5]/90 font-semibold mb-2 ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
+                          <MapPin className="w-3.5 h-3.5 text-[#E6A4B4] shrink-0" />
                           <span>{event.location}</span>
                         </div>
 
                         {/* Description */}
-                        <p className="font-sans text-[10px] sm:text-xs text-[#FFF0F5]/85 leading-relaxed font-normal">
+                        <p className="font-sans text-[11px] sm:text-sm text-[#FFF0F5]/90 leading-relaxed font-normal">
                           {event.description}
                         </p>
 
