@@ -26,50 +26,44 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-between text-center overflow-hidden bg-[#3D061A]">
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-between text-center overflow-hidden bg-gradient-to-b from-[#FFF0F5] via-[#FFEBEF] to-[#FFF0F5]">
       
-      {/* Background Palace Image (100% Pure Original Quality - Zero CSS filters or dark overlays) */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-bg.jpg" 
-          alt="Raj Vilas Palace" 
-          className="w-full h-full object-cover object-top"
-          style={{ imageRendering: 'high-quality' }}
-        />
-        
-        {/* Very subtle Downside Pink Shadow Overlay (Only at the bottom edge) */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#3D061A] via-[#5E0B2B]/20 to-transparent pointer-events-none" />
-      </div>
+      {/* Delicate Theme-based Light Polka-Dot Matrix Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-40 bg-[radial-gradient(#E6A4B4_1.2px,transparent_1.2px)] [background-size:20px_20px] pointer-events-none" />
+
+      {/* Subtle Soft Rose Glow Orbs in Corners */}
+      <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-[#F596AA]/20 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 -right-16 w-72 h-72 rounded-full bg-[#E6A4B4]/25 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 -left-16 w-80 h-80 rounded-full bg-[#F596AA]/20 blur-3xl pointer-events-none" />
 
       {/* Whimsical Animated Flying Butterflies Layer */}
       <WhimsicalButterflies />
 
-      {/* S.B.D Monograms & Golden Ganesha Icon at Upper Bar */}
+      {/* S.B.D Monograms at Upper Corners */}
       <div className="absolute top-4 sm:top-6 left-0 right-0 z-20 flex justify-between items-center px-6 sm:px-10 pointer-events-none">
-        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
+        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-sm uppercase">
           S.B.D
         </span>
 
-        {/* Traditional Gold Ganesha Symbol (Positioned Above Mantra in the Mid) */}
-        <div className="flex flex-col items-center pt-1">
-          <img 
-            src="/ganesha-reference.png" 
-            alt="Lord Ganesha" 
-            className="w-12 h-14 sm:w-16 sm:h-18 object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]"
-          />
-        </div>
-
-        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] uppercase">
+        <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-normal text-[#E65C8A] drop-shadow-sm uppercase">
           S.B.D
         </span>
       </div>
 
-      {/* Sanskrit Mantra (Locked at 79px) */}
+      {/* Dark Magenta Ganesha Symbol & Sanskrit Mantra Container (Positioned in Upper Mid) */}
       <div 
-        className="absolute left-0 right-0 z-20 px-4 text-center pointer-events-none transition-all duration-75"
-        style={{ top: `${layout.mantraTop}px` }}
+        className="absolute left-0 right-0 z-20 px-4 text-center pointer-events-none transition-all duration-75 flex flex-col items-center"
+        style={{ top: `${layout.mantraTop - 58}px` }}
       >
-        <p className="font-serif text-[11px] sm:text-xs text-[#E65C8A] tracking-wide max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)] font-bold leading-relaxed">
+        {/* Dark Magenta Lord Ganesha Icon (Enlarged & Centered Directly Above Mantra) */}
+        <img 
+          src="/ganesha-magenta.png" 
+          alt="Dark Magenta Lord Ganesha" 
+          className="w-14 h-16 sm:w-18 sm:h-20 object-contain mb-1.5 filter drop-shadow-[0_2px_8px_rgba(139,0,50,0.25)]"
+        />
+
+        {/* Sanskrit Mantra */}
+        <p className="font-serif text-[11px] sm:text-xs text-[#E65C8A] tracking-wide max-w-xs sm:max-w-sm mx-auto font-bold leading-relaxed drop-shadow-sm">
           वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
           निर्विघ्नं कुरु में देव, सर्व कार्येषु सर्वदा ॥
         </p>
@@ -85,7 +79,7 @@ export default function Hero() {
       >
         {/* Invitation Text (Between Mantra and Vivek's Name) */}
         <p 
-          className="font-sans uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2.5px_6px_rgba(0,0,0,0.95)] font-extrabold leading-relaxed text-center mb-8 max-w-xs sm:max-w-md"
+          className="font-sans uppercase tracking-widest text-[#5E0B2B] font-extrabold leading-relaxed text-center mb-8 max-w-xs sm:max-w-md"
           style={{ fontSize: `${layout.vivekParentSize}px` }}
         >
           We request your gracious<br />
@@ -96,13 +90,13 @@ export default function Hero() {
         {/* Groom: Vivek */}
         <div className="mb-0 text-center w-full">
           <h1 
-            className="font-script text-gold-gradient font-normal tracking-wide drop-shadow-[0_6px_14px_rgba(0,0,0,0.95)] py-0 px-3 leading-tight transition-all duration-75"
+            className="font-script text-[#5E0B2B] font-normal tracking-wide drop-shadow-[0_2px_4px_rgba(94,11,43,0.15)] py-0 px-3 leading-tight transition-all duration-75"
             style={{ fontSize: `${layout.nameFontSize}px` }}
           >
             Vivek
           </h1>
           <p 
-            className="font-sans uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2.5px_6px_rgba(0,0,0,0.95)] font-extrabold leading-relaxed transition-all duration-75"
+            className="font-sans uppercase tracking-widest text-[#3D061A] font-extrabold leading-relaxed transition-all duration-75"
             style={{ 
               marginTop: `${layout.vivekParentGap}px`,
               fontSize: `${layout.vivekParentSize}px`
@@ -118,23 +112,23 @@ export default function Hero() {
           className="flex items-center justify-center gap-4 w-5/6 transition-all duration-75"
           style={{ marginTop: `${layout.wedsGap}px`, marginBottom: `${layout.wedsGap}px` }}
         >
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#F596AA] to-[#FFD6E5]" />
-          <span className="font-serif text-base sm:text-lg text-[#FFD6E5] drop-shadow-[0_3px_6px_rgba(0,0,0,0.95)] font-bold tracking-widest uppercase">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#E6A4B4] to-[#5E0B2B]/40" />
+          <span className="font-serif text-base sm:text-lg text-[#5E0B2B] font-bold tracking-widest uppercase">
             Weds
           </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#F596AA] to-[#FFD6E5]" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#E6A4B4] to-[#5E0B2B]/40" />
         </div>
 
         {/* Bride: Indira */}
         <div className="mb-2 text-center w-full">
           <h1 
-            className="font-script text-gold-gradient font-normal tracking-wide drop-shadow-[0_6px_14px_rgba(0,0,0,0.95)] py-0 px-3 leading-tight transition-all duration-75"
+            className="font-script text-[#5E0B2B] font-normal tracking-wide drop-shadow-[0_2px_4px_rgba(94,11,43,0.15)] py-0 px-3 leading-tight transition-all duration-75"
             style={{ fontSize: `${layout.nameFontSize}px` }}
           >
             Indira
           </h1>
           <p 
-            className="font-sans uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2.5px_6px_rgba(0,0,0,0.95)] font-extrabold leading-relaxed transition-all duration-75"
+            className="font-sans uppercase tracking-widest text-[#3D061A] font-extrabold leading-relaxed transition-all duration-75"
             style={{ 
               marginTop: `${layout.indiraParentGap}px`,
               fontSize: `${layout.indiraParentSize}px`
@@ -145,8 +139,8 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="w-12 h-0.5 bg-[#F596AA]/70 mx-auto my-2 rounded-full opacity-70" />
-        <p className="font-serif text-[11px] tracking-[0.2em] text-[#FFF0F5]/90 uppercase font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <div className="w-12 h-0.5 bg-[#E6A4B4] mx-auto my-3 rounded-full opacity-80" />
+        <p className="font-serif text-[11px] tracking-[0.2em] text-[#5E0B2B] uppercase font-bold">
           {weddingData.venue.name} &bull; {weddingData.venue.city}
         </p>
       </motion.div>
@@ -179,133 +173,141 @@ export default function Hero() {
                   <span className="font-serif text-xs font-bold text-[#F8C8DC] uppercase tracking-wider">
                     🎛️ Size & Position Controller
                   </span>
-                  <button 
-                    onClick={() => setShowTuner(false)}
-                    className="text-[#F8C8DC] hover:text-white p-1"
-                  >
+                  <button onClick={() => setShowTuner(false)} className="text-[#FFF0F5]/70 hover:text-white p-1">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
 
-                {/* Sliders */}
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>1. Section Top Position</span>
-                    <span>{layout.topPadding}px</span>
+                {/* Slider 1: Mantra Top Position */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Mantra Top Position:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.mantraTop}px</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="-20" 
-                    max="200" 
-                    value={layout.topPadding} 
-                    onChange={(e) => setLayout({ ...layout, topPadding: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>2. Couple Names Font Size</span>
-                    <span>{layout.nameFontSize}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="40" 
-                    max="120" 
-                    value={layout.nameFontSize} 
-                    onChange={(e) => setLayout({ ...layout, nameFontSize: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>3. Vivek Family Text Gap</span>
-                    <span>{layout.vivekParentGap}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="-25" 
-                    max="35" 
-                    value={layout.vivekParentGap} 
-                    onChange={(e) => setLayout({ ...layout, vivekParentGap: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>4. Vivek Family Text Font Size</span>
-                    <span>{layout.vivekParentSize}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="7" 
-                    max="16" 
-                    value={layout.vivekParentSize} 
-                    onChange={(e) => setLayout({ ...layout, vivekParentSize: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>5. Weds Separator Gap</span>
-                    <span>{layout.wedsGap}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="45" 
-                    value={layout.wedsGap} 
-                    onChange={(e) => setLayout({ ...layout, wedsGap: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>6. Indira Family Text Gap</span>
-                    <span>{layout.indiraParentGap}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="-25" 
-                    max="35" 
-                    value={layout.indiraParentGap} 
-                    onChange={(e) => setLayout({ ...layout, indiraParentGap: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>7. Indira Family Text Font Size</span>
-                    <span>{layout.indiraParentSize}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="7" 
-                    max="16" 
-                    value={layout.indiraParentSize} 
-                    onChange={(e) => setLayout({ ...layout, indiraParentSize: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] font-bold text-[#F8C8DC] mb-1">
-                    <span>8. Mantra Top Position</span>
-                    <span>{layout.mantraTop}px</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="20" 
-                    max="140" 
-                    value={layout.mantraTop} 
+                  <input
+                    type="range"
+                    min="10"
+                    max="200"
+                    value={layout.mantraTop}
                     onChange={(e) => setLayout({ ...layout, mantraTop: Number(e.target.value) })}
-                    className="w-full accent-[#F596AA] cursor-pointer"
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
                   />
+                </div>
+
+                {/* Slider 2: Section Top Padding */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Section Top Position:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.topPadding}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="40"
+                    max="300"
+                    value={layout.topPadding}
+                    onChange={(e) => setLayout({ ...layout, topPadding: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 3: Couple Names Font Size */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Couple Names Size:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.nameFontSize}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="40"
+                    max="120"
+                    value={layout.nameFontSize}
+                    onChange={(e) => setLayout({ ...layout, nameFontSize: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 4: Vivek Family Gap */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Vivek Family Text Gap:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.vivekParentGap}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-40"
+                    max="40"
+                    value={layout.vivekParentGap}
+                    onChange={(e) => setLayout({ ...layout, vivekParentGap: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 5: Vivek Family Font Size */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Vivek Family Font Size:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.vivekParentSize}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="8"
+                    max="20"
+                    value={layout.vivekParentSize}
+                    onChange={(e) => setLayout({ ...layout, vivekParentSize: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 6: Weds Separator Gap */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Weds Separator Gap:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.wedsGap}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="60"
+                    value={layout.wedsGap}
+                    onChange={(e) => setLayout({ ...layout, wedsGap: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 7: Indira Family Gap */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Indira Family Text Gap:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.indiraParentGap}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-40"
+                    max="40"
+                    value={layout.indiraParentGap}
+                    onChange={(e) => setLayout({ ...layout, indiraParentGap: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                {/* Slider 8: Indira Family Font Size */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between text-[11px] font-sans">
+                    <span className="font-medium text-[#FFF0F5]/90">Indira Family Font Size:</span>
+                    <span className="font-bold text-[#F8C8DC]">{layout.indiraParentSize}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="8"
+                    max="20"
+                    value={layout.indiraParentSize}
+                    onChange={(e) => setLayout({ ...layout, indiraParentSize: Number(e.target.value) })}
+                    className="w-full accent-[#E6A4B4] cursor-pointer"
+                  />
+                </div>
+
+                <div className="text-[10px] text-[#F8C8DC] bg-[#5E0B2B] p-2 rounded-lg border border-[#E6A4B4]/40 mt-1 font-mono text-center">
+                  Copy values to state to lock permanently!
                 </div>
               </motion.div>
             )}
