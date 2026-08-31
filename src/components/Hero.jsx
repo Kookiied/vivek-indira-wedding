@@ -8,7 +8,7 @@ import { Sliders, X } from 'lucide-react';
  * DEVELOPER TOGGLE FOR LIVE POSITION & SIZE CONTROLLER:
  * Set ENABLE_DEV_CONTROLLER to true anytime in the future to reactivate the on-screen live slider widget!
  */
-const ENABLE_DEV_CONTROLLER = false;
+const ENABLE_DEV_CONTROLLER = true;
 
 export default function Hero() {
   const [showTuner, setShowTuner] = useState(false);
