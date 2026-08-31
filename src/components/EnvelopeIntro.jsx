@@ -12,12 +12,12 @@ export default function EnvelopeIntro({ onOpen }) {
     if (isOpen) return;
     setIsOpen(true);
 
-    // Golden Sparkles Explosion
+    // Cerise Pink & Magenta Sparkles Explosion
     confetti({
       particleCount: 100,
       spread: 110,
       origin: { y: 0.5 },
-      colors: ['#FFD700', '#FFF3CC', '#4A040F', '#AA820A', '#F3E5AB']
+      colors: ['#E65C8A', '#FFD6E5', '#F596AA', '#3D061A', '#FFF0F5']
     });
 
     // Notify parent after light rays expand
@@ -55,7 +55,7 @@ export default function EnvelopeIntro({ onOpen }) {
           />
         )}
 
-        {/* Radiant Golden Sunburst Beams (Explodes on Open) */}
+        {/* Radiant Cerise Pink Sunburst Beams (Explodes on Open) */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
@@ -64,11 +64,11 @@ export default function EnvelopeIntro({ onOpen }) {
               transition={{ duration: 1.4, ease: "easeOut" }}
               className="absolute z-30 pointer-events-none flex items-center justify-center"
             >
-              {/* Glowing Golden Core */}
-              <div className="w-[600px] h-[600px] rounded-full bg-radial from-[#FFF3CC] via-[#FFD700]/85 to-transparent blur-xl" />
+              {/* Glowing Cerise Pink Core */}
+              <div className="w-[600px] h-[600px] rounded-full bg-radial from-[#FFF0F5] via-[#E65C8A]/85 to-transparent blur-xl" />
               
               {/* 16 Rotating Sunburst Light Rays */}
-              <svg viewBox="0 0 200 200" className="absolute w-[1000px] h-[1000px] animate-spin-slow opacity-90 text-[#FFD700] fill-current">
+              <svg viewBox="0 0 200 200" className="absolute w-[1000px] h-[1000px] animate-spin-slow opacity-90 text-[#E65C8A] fill-current">
                 {[...Array(16)].map((_, i) => (
                   <polygon key={i} points="100,100 93,0 107,0" transform={`rotate(${i * 22.5} 100 100)`} />
                 ))}
@@ -85,7 +85,7 @@ export default function EnvelopeIntro({ onOpen }) {
               transition={{ repeat: Infinity, duration: 2 }}
               className="absolute bottom-8 left-0 right-0 z-40 text-center px-4 flex items-center justify-center pointer-events-none"
             >
-              <p className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#FFF3CC] font-semibold flex items-center justify-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] bg-black/60 py-2.5 px-6 rounded-full border border-[#FFD700]/40 backdrop-blur-md">
+              <p className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.35em] text-[#FFF0F5] font-semibold flex items-center justify-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] bg-black/60 py-2.5 px-6 rounded-full border border-[#E6A4B4]/50 backdrop-blur-md">
                 Tap Wax Seal to Open Invitation
               </p>
             </motion.div>
