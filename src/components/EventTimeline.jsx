@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { weddingData } from '../config/weddingData';
 import { Clock, MapPin } from 'lucide-react';
+import FallingFlora from './FallingFlora';
 
 export default function EventTimeline() {
   const containerRef = useRef(null);
@@ -24,6 +25,9 @@ export default function EventTimeline() {
 
   return (
     <section className="relative w-full bg-[#5E0B2B] text-[#FFF0F5] py-16 px-1 sm:px-4 overflow-hidden">
+      
+      {/* Falling Flora and Butterfly Background Animation */}
+      <FallingFlora />
       
       {/* Section Header */}
       <div className="text-center max-w-md mx-auto mb-16">
