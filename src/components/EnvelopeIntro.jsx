@@ -39,16 +39,16 @@ export default function EnvelopeIntro({ onOpen }) {
       });
     }
 
-    // Notify parent after animation expands to cover the envelope
+    // Notify parent after animation smoothly unfolds & expands
     setTimeout(() => {
       onOpen();
-    }, 1300);
+    }, 2200);
   };
 
   return (
     <motion.div 
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.7, ease: "easeOut" } }}
+      exit={{ opacity: 0, transition: { duration: 1.0, ease: "easeInOut" } }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#180104] overflow-hidden select-none"
     >
       {/* Full-Screen Velvet Envelope Container */}
@@ -79,7 +79,7 @@ export default function EnvelopeIntro({ onOpen }) {
             <motion.div 
               initial={{ opacity: 0, scale: 0.2 }}
               animate={{ opacity: [0, 0.95, 1], scale: [0.3, 2.5, 6] }}
-              transition={{ duration: 1.4, ease: "easeOut" }}
+              transition={{ duration: 2.2, ease: "easeOut" }}
               className="absolute z-30 pointer-events-none flex items-center justify-center"
             >
               {/* Glowing Cerise Pink Core */}
@@ -97,8 +97,8 @@ export default function EnvelopeIntro({ onOpen }) {
           {isOpen && ACTIVE_ANIMATION === 'lotus' && (
             <motion.div 
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: [0, 1, 1], scale: [0, 1.8, 8], rotate: [0, 60, 120] }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              animate={{ opacity: [0, 1, 1], scale: [0, 1.8, 8], rotate: [0, 90, 180] }}
+              transition={{ duration: 2.6, ease: "easeInOut" }}
               className="absolute z-30 pointer-events-none flex items-center justify-center"
             >
               {/* Glowing Rose Gold Core */}
