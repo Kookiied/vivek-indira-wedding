@@ -39,16 +39,16 @@ export default function EnvelopeIntro({ onOpen }) {
       });
     }
 
-    // Notify parent after animation expands
+    // Notify parent after animation expands to cover the envelope
     setTimeout(() => {
       onOpen();
-    }, 1500);
+    }, 1300);
   };
 
   return (
     <motion.div 
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.08, transition: { duration: 0.8, ease: "easeInOut" } }}
+      exit={{ opacity: 0, transition: { duration: 0.7, ease: "easeOut" } }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#180104] overflow-hidden select-none"
     >
       {/* Full-Screen Velvet Envelope Container */}
@@ -97,19 +97,19 @@ export default function EnvelopeIntro({ onOpen }) {
           {isOpen && ACTIVE_ANIMATION === 'lotus' && (
             <motion.div 
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.5, 4, 8], rotate: [0, 90, 180] }}
-              transition={{ duration: 1.8, ease: "easeInOut" }}
+              animate={{ opacity: [0, 1, 1], scale: [0, 1.8, 8], rotate: [0, 60, 120] }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
               className="absolute z-30 pointer-events-none flex items-center justify-center"
             >
               {/* Glowing Rose Gold Core */}
-              <div className="absolute w-[400px] h-[400px] rounded-full bg-[#E6A4B4]/40 blur-3xl" />
+              <div className="absolute w-[500px] h-[500px] rounded-full bg-[#E6A4B4]/60 blur-3xl" />
               
               {/* Intricate SVG Mandala / Blooming Lotus */}
-              <svg viewBox="0 0 200 200" className="absolute w-[600px] h-[600px] text-[#E6A4B4] fill-current opacity-90 drop-shadow-[0_0_25px_rgba(230,164,180,0.9)]">
+              <svg viewBox="0 0 200 200" className="absolute w-[700px] h-[700px] text-[#E6A4B4] fill-current opacity-95 drop-shadow-[0_0_30px_rgba(230,164,180,0.95)]">
                 <g transform="translate(100,100)">
                   {/* Outer 12 Lotus Petals */}
                   {[...Array(12)].map((_, i) => (
-                    <path key={`outer-${i}`} d="M0,0 C20,-40 20,-80 0,-100 C-20,-80 -20,-40 0,0" transform={`rotate(${i * 30})`} opacity="0.8"/>
+                    <path key={`outer-${i}`} d="M0,0 C20,-40 20,-80 0,-100 C-20,-80 -20,-40 0,0" transform={`rotate(${i * 30})`} opacity="0.85"/>
                   ))}
                   {/* Inner 12 Lotus Petals */}
                   {[...Array(12)].map((_, i) => (
