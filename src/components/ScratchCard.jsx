@@ -5,6 +5,7 @@ import confetti from 'canvas-confetti';
 function ScratchHeart({ hiddenText, label, onReveal }) {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const hasRevealedRef = useRef(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isDrawing, setIsDrawing] = useState(false);
 
@@ -32,9 +33,9 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    // Elegant SCRATCH prompt in the center
+    // Prominent, Bolder SCRATCH prompt in the center
     ctx.fillStyle = '#3D061A';
-    ctx.font = 'bold 9px Montserrat, sans-serif';
+    ctx.font = '900 13px Montserrat, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('SCRATCH', width / 2, height / 2);
@@ -73,7 +74,7 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
 
   const scratch = (e) => {
     const canvas = canvasRef.current;
-    if (!canvas || isRevealed) return;
+    if (!canvas || isRevealed || hasRevealedRef.current) return;
     const ctx = canvas.getContext('2d');
     const coords = getCoordinates(e);
     if (!coords || !ctx) return;
@@ -87,6 +88,7 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
   };
 
   const checkRevealPercentage = () => {
+    if (hasRevealedRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -105,8 +107,9 @@ function ScratchHeart({ hiddenText, label, onReveal }) {
     const totalPixels = canvas.width * canvas.height;
     const transparentRatio = transparentCount / totalPixels;
 
-    // Trigger complete reveal once 35% is cleared
+    // Trigger complete reveal once 35% is cleared (guaranteed exactly once)
     if (transparentRatio > 0.35) {
+      hasRevealedRef.current = true;
       setIsRevealed(true);
       if (onReveal) onReveal();
     }
