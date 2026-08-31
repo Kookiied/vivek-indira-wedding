@@ -73,7 +73,7 @@ export default function EventTimeline() {
               transition={{ duration: 0.6 }}
               className="sticky top-4 z-20 flex justify-center mb-8"
             >
-              <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/60 text-[#F8C8DC] px-5 sm:px-8 py-2 rounded-full shadow-lg backdrop-blur-md flex items-center justify-center">
+              <div className="bg-[#3D061A]/95 border border-[#E6A4B4]/60 text-[#F8C8DC] px-5 sm:px-8 py-2 rounded-full shadow-lg backdrop-blur-md flex items-center justify-center">
                 <div className="text-center">
                   <span className="font-serif font-bold text-xs sm:text-sm tracking-[0.2em] uppercase block leading-none">
                     {dayGroup.dayTitle}
@@ -85,8 +85,8 @@ export default function EventTimeline() {
               </div>
             </motion.div>
 
-            {/* Day Events - Alternating Left & Right with 24px Margin Gap from Center Line */}
-            <div className="space-y-10">
+            {/* Day Events - Alternating Left & Right with 20px-24px Margin Gap from Center Line */}
+            <div className="space-y-12">
               {dayGroup.events.map((event, eventIdx) => {
                 const isEven = eventIdx % 2 === 0;
 
@@ -104,35 +104,35 @@ export default function EventTimeline() {
                       <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#E6A4B4] rotate-45 shadow-[0_0_6px_rgba(230,164,180,0.8)]" />
                     </div>
 
-                    {/* Event Content Card (Alternating Left & Right on mobile and desktop) */}
+                    {/* Event Content Card (Alternating Left & Right with pristine center rose clearance) */}
                     <div className={`w-1/2 ${isEven ? 'pr-5 sm:pr-10 text-left sm:text-right' : 'ml-auto pl-5 sm:pl-10 text-left'}`}>
 
-                      <div className="bg-[#3D061A]/90 border border-[#E6A4B4]/40 rounded-xl p-2.5 sm:p-5 shadow-xl hover:border-[#E6A4B4] transition-all group text-left">
+                      <div className="bg-[#3D061A]/95 border border-[#E6A4B4]/50 rounded-2xl p-3.5 sm:p-6 shadow-2xl hover:border-[#E6A4B4] transition-all group text-left">
                         
-                        {/* Event Number & Time (Consistently left-aligned on mobile, right-aligned on desktop for left cards) */}
-                        <div className={`flex items-center gap-1 mb-1 text-[#F8C8DC] text-[9px] sm:text-xs font-semibold ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
-                          <span className="font-serif opacity-60">
+                        {/* Event Number & Time */}
+                        <div className={`flex items-center gap-1 mb-1.5 text-[#F8C8DC] text-[10px] sm:text-xs font-semibold ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
+                          <span className="font-serif opacity-70">
                             {event.number} &bull;
                           </span>
-                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-1.5 py-0.5 rounded-full border border-[#E6A4B4]/30 text-[9px] sm:text-xs">
-                            <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F8C8DC]" />
+                          <span className="inline-flex items-center gap-1 bg-[#5E0B2B] px-2 py-0.5 rounded-full border border-[#E6A4B4]/40 text-[10px] sm:text-xs font-bold">
+                            <Clock className="w-3 h-3 text-[#F8C8DC]" />
                             {event.time}
                           </span>
                         </div>
 
-                        {/* Title */}
-                        <h3 className={`font-serif text-xs sm:text-lg font-bold text-[#F8C8DC] mb-1 ${event.title.includes("WEDDING") ? 'text-xs sm:text-xl text-[#F8C8DC] tracking-wider' : ''}`}>
+                        {/* Title (Enlarged for crisp legibility) */}
+                        <h3 className={`font-serif text-sm sm:text-lg font-extrabold text-[#F8C8DC] mb-1.5 leading-snug ${event.title.includes("WEDDING") ? 'text-sm sm:text-xl text-[#F8C8DC] tracking-wider' : ''}`}>
                           {event.title}
                         </h3>
 
-                        {/* Location (Consistently left-aligned next to icon on mobile, right-aligned on desktop for left cards) */}
-                        <div className={`flex items-center gap-1 text-[9px] sm:text-xs text-[#FFF0F5]/80 mb-1 ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
-                          <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#E6A4B4] shrink-0" />
+                        {/* Location */}
+                        <div className={`flex items-center gap-1 text-[10px] sm:text-xs text-[#FFF0F5]/90 font-medium mb-1.5 ${isEven ? 'justify-start sm:justify-end' : 'justify-start'}`}>
+                          <MapPin className="w-3 h-3 text-[#E6A4B4] shrink-0" />
                           <span>{event.location}</span>
                         </div>
 
                         {/* Description */}
-                        <p className="font-sans text-[9px] sm:text-xs text-[#FFF0F5]/70 leading-snug sm:leading-relaxed">
+                        <p className="font-sans text-[10px] sm:text-xs text-[#FFF0F5]/85 leading-relaxed font-normal">
                           {event.description}
                         </p>
 
