@@ -83,6 +83,16 @@ export default function Hero() {
         className="relative z-20 px-6 my-auto pb-2 max-w-lg w-full flex flex-col items-center transition-all duration-75"
         style={{ paddingTop: `${layout.topPadding}px` }}
       >
+        {/* Invitation Text (Between Mantra and Vivek's Name) */}
+        <p 
+          className="font-sans uppercase tracking-widest text-[#FFF0F5] drop-shadow-[0_2.5px_6px_rgba(0,0,0,0.95)] font-extrabold leading-relaxed text-center mb-8 max-w-xs sm:max-w-md"
+          style={{ fontSize: `${layout.vivekParentSize}px` }}
+        >
+          We request your gracious<br />
+          presence and blessings on the auspicious occasion<br />
+          of the wedding celebration of
+        </p>
+
         {/* Groom: Vivek */}
         <div className="mb-0 text-center w-full">
           <h1 
