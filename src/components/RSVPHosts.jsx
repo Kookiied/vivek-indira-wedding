@@ -82,6 +82,7 @@ export default function RSVPHosts() {
             <p>Varun Raitani</p>
             <p>Mohit Raitani</p>
             <p>Gautam Raitani</p>
+            <p>& All Raitani Family</p>
           </div>
         </motion.div>
 
