@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { weddingData } from '../config/weddingData';
 import ScratchCard from './ScratchCard';
 
-export default function Countdown() {
+export default function Countdown({ onScratchComplete }) {
   const [isFullyRevealed, setIsFullyRevealed] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: '00',
@@ -11,6 +11,13 @@ export default function Countdown() {
     minutes: '00',
     seconds: '00'
   });
+
+  const handleAllRevealed = () => {
+    setIsFullyRevealed(true);
+    if (onScratchComplete) {
+      onScratchComplete();
+    }
+  };
 
   useEffect(() => {
     const targetDate = new Date('2026-10-25T12:00:00+05:30').getTime();
@@ -78,7 +85,7 @@ export default function Countdown() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mb-6"
         >
-          <ScratchCard onAllRevealed={() => setIsFullyRevealed(true)} />
+          <ScratchCard onAllRevealed={handleAllRevealed} />
         </motion.div>
 
         {/* Section Header & Timer Grid: Rendered ONLY AFTER all 3 hearts are scratched */}

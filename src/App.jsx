@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Phone, MessageCircle } from 'lucide-react';
 import EnvelopeIntro from './components/EnvelopeIntro';
 import Hero from './components/Hero';
@@ -17,11 +17,19 @@ export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [autoPlayAudio, setAutoPlayAudio] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isScratchUnlocked, setIsScratchUnlocked] = useState(false);
 
   const handleEnvelopeOpen = () => {
     setIsEnvelopeOpen(true);
     setAutoPlayAudio(true);
     // Dispatch resize event after envelope animation to recalculate scroll positions
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 500);
+  };
+
+  const handleScratchComplete = () => {
+    setIsScratchUnlocked(true);
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 500);
@@ -49,69 +57,81 @@ export default function App() {
           {/* 2. Hero Announcement */}
           <Hero />
 
-          {/* 3. Countdown & Intro Quote */}
-          <Countdown />
+          {/* 3. Countdown & Scratch Card (Locks scroll until 3 hearts are scratched) */}
+          <Countdown onScratchComplete={handleScratchComplete} />
 
-          {/* 4. Schedule of Events */}
-          <EventTimeline key={isEnvelopeOpen ? 'open' : 'closed'} />
+          {/* Locked Sections 4-9 & Footer: Unlocked ONLY after scratching the hearts */}
+          <AnimatePresence>
+            {isScratchUnlocked && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.0, ease: "easeOut" }}
+                className="w-full"
+              >
+                {/* 4. Schedule of Events */}
+                <EventTimeline key={isEnvelopeOpen ? 'open' : 'closed'} />
 
-          {/* 5. Dress Code Guide */}
-          <DressCode />
+                {/* 5. Dress Code Guide */}
+                <DressCode />
 
-          {/* 6. Location & Venue */}
-          <LocationDetails />
+                {/* 6. Location & Venue */}
+                <LocationDetails />
 
-          {/* 7. RSVP Engine */}
-          <RSVPForm />
+                {/* 7. RSVP Engine */}
+                <RSVPForm />
 
-          {/* 8. RSVP Hosts Details */}
-          <RSVPHosts />
+                {/* 8. RSVP Hosts Details */}
+                <RSVPHosts />
 
-          {/* 9. Final Portrait */}
-          <FinalPortrait />
+                {/* 9. Final Portrait */}
+                <FinalPortrait />
 
-          {/* Footer: Admin Portal Link & Developer Credits */}
-          <div className="w-full py-4 bg-[#3D061A] text-center border-t border-[#E6A4B4]/40 flex flex-col items-center justify-center gap-2 px-4">
-            <button 
-              onClick={() => setIsAdminOpen(true)}
-              className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-[#F8C8DC] opacity-80 hover:opacity-100 transition-opacity cursor-pointer font-serif py-1 px-3 rounded-full hover:bg-white/10"
-            >
-              <Lock className="w-3 h-3 text-[#F8C8DC]" />
-              Host Admin Portal
-            </button>
+                {/* Footer: Admin Portal Link & Developer Credits */}
+                <div className="w-full py-4 bg-[#3D061A] text-center border-t border-[#E6A4B4]/40 flex flex-col items-center justify-center gap-2 px-4">
+                  <button 
+                    onClick={() => setIsAdminOpen(true)}
+                    className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-[#F8C8DC] opacity-80 hover:opacity-100 transition-opacity cursor-pointer font-serif py-1 px-3 rounded-full hover:bg-white/10"
+                  >
+                    <Lock className="w-3 h-3 text-[#F8C8DC]" />
+                    Host Admin Portal
+                  </button>
 
-            {/* Developer Credits with Interactive Call & WhatsApp Links */}
-            <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] text-[#FFF0F5]/80 font-serif pt-1 border-t border-white/10 w-full">
-              <span>Developed by <strong className="text-[#F8C8DC] font-semibold">Varun Raitani</strong></span>
-              <span className="text-[#E6A4B4]/50">&bull;</span>
-              
-              <div className="flex items-center gap-2">
-                <span className="text-[#FFF0F5]/90 font-sans text-[11px] font-medium">+91 7310138649</span>
-                
-                {/* Phone Call Link Button */}
-                <a 
-                  href="tel:+917310138649" 
-                  title="Call Varun Raitani"
-                  aria-label="Call Varun Raitani"
-                  className="p-1.5 rounded-full bg-[#E6A4B4]/20 border border-[#E6A4B4]/60 text-[#F8C8DC] hover:bg-[#E6A4B4] hover:text-[#3D061A] transition-all cursor-pointer flex items-center justify-center shadow-sm"
-                >
-                  <Phone className="w-3 h-3" />
-                </a>
+                  {/* Developer Credits with Interactive Call & WhatsApp Links */}
+                  <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] text-[#FFF0F5]/80 font-serif pt-1 border-t border-white/10 w-full">
+                    <span>Developed by <strong className="text-[#F8C8DC] font-semibold">Varun Raitani</strong></span>
+                    <span className="text-[#E6A4B4]/50">&bull;</span>
+                    
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#FFF0F5]/90 font-sans text-[11px] font-medium">+91 7310138649</span>
+                      
+                      {/* Phone Call Link Button */}
+                      <a 
+                        href="tel:+917310138649" 
+                        title="Call Varun Raitani"
+                        aria-label="Call Varun Raitani"
+                        className="p-1.5 rounded-full bg-[#E6A4B4]/20 border border-[#E6A4B4]/60 text-[#F8C8DC] hover:bg-[#E6A4B4] hover:text-[#3D061A] transition-all cursor-pointer flex items-center justify-center shadow-sm"
+                      >
+                        <Phone className="w-3 h-3" />
+                      </a>
 
-                {/* WhatsApp Message Link Button */}
-                <a 
-                  href="https://wa.me/917310138649" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  title="Send WhatsApp Message to Varun Raitani"
-                  aria-label="Send WhatsApp Message to Varun Raitani"
-                  className="p-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/60 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all cursor-pointer flex items-center justify-center shadow-sm"
-                >
-                  <MessageCircle className="w-3 h-3" />
-                </a>
-              </div>
-            </div>
-          </div>
+                      {/* WhatsApp Message Link Button */}
+                      <a 
+                        href="https://wa.me/917310138649" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        title="Send WhatsApp Message to Varun Raitani"
+                        aria-label="Send WhatsApp Message to Varun Raitani"
+                        className="p-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/60 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all cursor-pointer flex items-center justify-center shadow-sm"
+                      >
+                        <MessageCircle className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
 
