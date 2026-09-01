@@ -4,15 +4,9 @@ import confetti from 'canvas-confetti';
 
 export default function EnvelopeIntro({ onOpen }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeAnim, setActiveAnim] = useState('lotus'); // Default selected animation
-
-  const animationOptions = [
-    { id: 'outburst', label: '1. Pink Sunburst' },
-    { id: 'lotus', label: '2. Blooming Lotus' },
-    { id: 'stardust', label: '3. Golden Stardust' },
-    { id: 'curtain', label: '4. Velvet Curtain' },
-    { id: 'butterfly', label: '5. Butterfly Swarm' }
-  ];
+  // Default selected animation set to 'stardust' (Golden Stardust & Ripple)
+  // Options preserved in code: 'outburst', 'lotus', 'stardust', 'curtain', 'butterfly'
+  const [activeAnim, setActiveAnim] = useState('stardust');
 
   const handleOpen = (e) => {
     if (e) {
@@ -100,24 +94,6 @@ export default function EnvelopeIntro({ onOpen }) {
       exit={{ opacity: 0, transition: { duration: 1.0, ease: "easeInOut" } }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#180104] overflow-hidden select-none"
     >
-      {/* 🛠️ DEVELOPER TESTING UI: Toggle Menu (Hidden when opened) */}
-      {!isOpen && (
-        <div className="absolute top-8 left-0 right-0 z-[60] flex flex-wrap justify-center gap-2 px-4 pointer-events-auto">
-          {animationOptions.map(anim => (
-            <button
-              key={anim.id}
-              onClick={(e) => { e.stopPropagation(); setActiveAnim(anim.id); }}
-              className={`px-3 py-2 text-[10px] sm:text-xs font-bold rounded-full border transition-all ${
-                activeAnim === anim.id 
-                  ? 'bg-[#E65C8A] text-white border-white/50 shadow-[0_0_15px_rgba(230,92,138,0.8)] scale-105' 
-                  : 'bg-black/60 text-white/70 border-white/20 hover:bg-black/80'
-              }`}
-            >
-              {anim.label}
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* Full-Screen Velvet Envelope Container */}
       <div className="relative w-full h-full overflow-hidden flex items-center justify-center bg-black">
