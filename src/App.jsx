@@ -13,11 +13,16 @@ import FinalPortrait from './components/FinalPortrait';
 import FloatingMusic from './components/FloatingMusic';
 import AdminDashboard from './components/AdminDashboard';
 
+// Feature Flag: Lock scrolling past countdown until scratch cards are scratched.
+// Set to false: Allows guests to freely scroll the entire website immediately!
+// Set to true: Locks sections 4-9 until all 3 hearts are scratched.
+const ENABLE_SCRATCH_LOCK = false;
+
 export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [autoPlayAudio, setAutoPlayAudio] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [isScratchUnlocked, setIsScratchUnlocked] = useState(false);
+  const [isScratchUnlocked, setIsScratchUnlocked] = useState(!ENABLE_SCRATCH_LOCK);
 
   const handleEnvelopeOpen = () => {
     setIsEnvelopeOpen(true);
