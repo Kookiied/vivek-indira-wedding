@@ -207,7 +207,6 @@ export default function RSVPForm() {
                     className="w-full bg-transparent border-b border-[#E6A4B4]/50 py-2 font-sans text-xs text-[#2D2D2D] focus:outline-none focus:border-[#5E0B2B] transition-colors cursor-pointer"
                   >
                     <option value="" disabled>Select date of arrival</option>
-                    <option value="23 October 2026">23 October 2026</option>
                     <option value="24 October 2026">24 October 2026</option>
                     <option value="25 October 2026">25 October 2026</option>
                   </select>
