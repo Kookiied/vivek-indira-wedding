@@ -13,6 +13,9 @@ export default function FallingFlora() {
     { id: 7, emoji: '🌸', left: '15%', duration: 27, delay: 10, size: 'text-xl', xOffset: 45 },
     { id: 8, emoji: '🍃', left: '80%', duration: 25, delay: 12, size: 'text-2xl', xOffset: -25 },
     { id: 9, emoji: '🌺', left: '95%', duration: 23, delay: 6, size: 'text-xl', xOffset: 35 },
+    { id: 10, emoji: '🌸', left: '33%', duration: 24, delay: 4, size: 'text-2xl', xOffset: -30 },
+    { id: 11, emoji: '🌸', left: '62%', duration: 26, delay: 1, size: 'text-xl', xOffset: 35 },
+    { id: 12, emoji: '🌸', left: '78%', duration: 28, delay: 9, size: 'text-2xl', xOffset: -40 },
   ];
 
   return (
