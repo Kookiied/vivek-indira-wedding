@@ -154,17 +154,17 @@ export const weddingData = {
       title: "Haldi",
       theme: "Shades of Blush Pink & Soft Pastels",
       subtitle: "Fresh, graceful & glowing with love",
-      paletteColors: ["#FFC6FF", "#FFADAD", "#FDFFB6"],
+      paletteColors: ["#FFC6FF", "#FFB6C1", "#F8C8DC"],
       women: "Pastel Saree / Easy Kurta Set",
-      men: "Yellow / Pastel Yellow Kurta"
+      men: "Pink / Baby Pink Kurta"
     },
     {
       title: "The Wedding",
       theme: "Royal Traditional Attire",
       subtitle: "Timeless traditions, royal elegance and celebration",
       paletteColors: ["#4A040F", "#D4AF37", "#FFFFFF"],
-      women: "Royal Lehenga / Heavy Silk Saree",
-      men: "Sherwani / Royal Bandhgala"
+      women: "Lehenga / Heavy Silk Saree / Designer Sharara",
+      men: "Jodhpuri Suit / Royal Bandhgala / Indo-Western"
     }
   ]
 };
